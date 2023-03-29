@@ -35,7 +35,6 @@ CREATE TABLE Books
 ALTER TABLE	Books
 DROP COLUMN
 	Name, Email, Contact, Address
-
 ALTER TABLE	Books
 ADD
 	Title varchar(100),
@@ -372,6 +371,81 @@ EXEC OrderItemCU
 	@OrderID=1,
 	@BookID=1,
 	@Action='U'
+
+
+-- Read/Delete Stored Procedure --
+GO
+CREATE PROCEDURE TablesRD
+	@ID int,
+	@Table varchar(15),
+	@Action varchar(1)
+	AS BEGIN
+		if @Action = 'R'
+		BEGIN
+			if @Table = 'Authors'
+				BEGIN
+					Select * FROM Authors WHERE ID = @ID
+				END
+			if @Table = 'Publishers'
+				BEGIN
+					Select * FROM Publishers WHERE ID = @ID
+				END
+			if @Table = 'Books'
+				BEGIN
+					Select * FROM Books WHERE ID = @ID
+				END
+			if @Table = 'Customers'
+				BEGIN
+					Select * FROM Customers WHERE ID = @ID
+				END
+			if @Table = 'Orders'
+				BEGIN
+					Select * FROM Orders WHERE ID = @ID
+				END
+			if @Table = 'OrderItem'
+				BEGIN
+					Select * FROM OrderItem WHERE ID = @ID
+				END
+		END
+		if @Action = 'D'
+		BEGIN
+			if @Table = 'Authors'
+				BEGIN
+					Delete FROM Authors WHERE ID = @ID
+				END
+			if @Table = 'Publishers'
+				BEGIN
+					Delete FROM Publishers WHERE ID = @ID
+				END
+			if @Table = 'Books'
+				BEGIN
+					Delete FROM Books WHERE ID = @ID
+				END
+			if @Table = 'Customers'
+				BEGIN
+					Delete FROM Customers WHERE ID = @ID
+				END
+			if @Table = 'Orders'
+				BEGIN
+					Delete FROM Orders WHERE ID = @ID
+				END
+			if @Table = 'OrderItem'
+				BEGIN
+					Delete FROM OrderItem WHERE ID = @ID
+				END
+		END
+	END
+GO
+
+EXEC TablesRD
+	@ID=1,
+	@Table='Authors',
+	@Action='D'
+
+EXEC TablesRD
+	@ID=1,
+	@Table='Orders',
+	@Action='R'
 
 
 --DROP PROCEDURE AuthorCU
