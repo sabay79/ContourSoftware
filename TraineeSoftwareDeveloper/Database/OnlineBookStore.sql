@@ -1,4 +1,4 @@
-CREATE DATABASE	OnlineBookStore
+﻿CREATE DATABASE	OnlineBookStore
 
 USE OnlineBookStore
 
@@ -449,3 +449,111 @@ EXEC TablesRD
 
 
 --DROP PROCEDURE AuthorCU
+
+
+-- SQL QUERIES --
+-- Authors  Publishers  Books  Customers  Orders  OrderItem --
+
+select * from Books
+
+select distinct AuthorID from Books
+select count(distinct AuthorID) from Books
+
+select * from Books where Year > 1900 AND (ISBN<>1013 OR AuthorID<>2)
+select * from Books where NOT (AuthorID>2) order by ISBN DESC
+
+select * from Books where Title IS NULL​
+select * from Books where Title IS NOT NULL​
+
+select TOP 3 Title from Books where Title Like '%a%'
+select TOP 50 PERCENT * from Books where ISBN>=1012
+
+select	count(Price) PriceCount, 
+		min(Price) MinPrice, 
+		max(Price) MaxPrice,
+		avg(Price) AvgPrice,
+		sum(Price) PriceSum
+from Books
+
+select * from Books where Title like '[ace]%'
+select * from Books where Title like '[a-p]%'
+
+select * from Books where AuthorID IN (1,3)
+select * from Books where Price BETWEEN 2000 AND 3000
+
+select CONCAT(c.FirstName, c.LastName) as Customer , b.Title Book, a.FirstName Author, p.Name Publisher, b.Year as 'Year of Publication', b.Price Price, oi.Quantity Qty, (b.Price*oi.Quantity) TotalPrice
+	from Books b, Authors a, Publishers p, Customers c, Orders o, OrderItem oi
+		where oi.BookID=b.ID AND oi.OrderID=o.ID AND o.CustomerID=c.ID AND b.AuthorID=a.ID AND b.PublisherID=p.ID
+			order by b.Title
+		
+select * from Customers c
+INNER JOIN Orders o
+ON c.ID = o.CustomerID
+
+select Title, ISBN, Price, Year, CONCAT(FirstName, LastName) Author, Gender, Name as Publisher 
+from Books b
+INNER JOIN Authors a ON b.AuthorID = a.ID
+INNER JOIN Publishers p on b.PublisherID = p.ID
+where Gender='Male'
+
+select Gender, count(Price) PriceCount, 
+		min(Price) MinPrice, 
+		max(Price) MaxPrice,
+		avg(Price) AvgPrice,
+		sum(Price) PriceSum
+from Books b
+INNER JOIN Authors a
+ON b.AuthorID=a.ID
+group by Gender
+order by sum(Price) desc
+
+select Gender, count(Price) PriceCount, 
+		min(Price) MinPrice, 
+		max(Price) MaxPrice,
+		avg(Price) AvgPrice,
+		sum(Price) PriceSum
+from Books b, Authors a
+where b.AuthorID=a.ID
+group by Gender
+order by sum(Price) desc
+
+select Gender, count(Price) PriceCount, 
+		min(Price) MinPrice, 
+		max(Price) MaxPrice,
+		avg(Price) AvgPrice,
+		sum(Price) PriceSum
+from Books b, Authors a
+where b.AuthorID=a.ID
+group by Gender
+having avg(Price)<4000
+order by sum(Price) desc
+
+select FirstName from Customers
+where EXISTS (select DeliveryStatus from Orders where Orders.CustomerID = Customers.ID)
+
+select CONCAT(FirstName,Lastname) as Author from Authors
+where ID = ANY (select AuthorID from Books where Price > 2500)
+
+select CONCAT(FirstName,Lastname) as Author from Authors
+where ID = ALL (select AuthorID from Books where Price > 2500)
+
+-- The SELECT INTO statement copies data from one table into a new table --
+select CONCAT(c.FirstName, c.LastName) as Customer , b.Title Book, a.FirstName Author, p.Name Publisher, b.Year as 'Year of Publication', b.Price Price, oi.Quantity Qty, (b.Price*oi.Quantity) TotalPrice
+	INTO CustomerDeliveryInfo
+	from Books b, Authors a, Publishers p, Customers c, Orders o, OrderItem oi
+		where oi.BookID=b.ID AND oi.OrderID=o.ID AND o.CustomerID=c.ID AND b.AuthorID=a.ID AND b.PublisherID=p.ID
+			order by b.Title
+
+-- The INSERT INTO SELECT statement copies data from one table and inserts it into another table --
+-- INSERT INTO Customers (CustomerName, City, Country)
+-- SELECT SupplierName, City, Country FROM Suppliers;
+
+select Title, 
+CASE 
+	WHEN Price>3000 THEN '>3000'
+	WHEN Price=3000 THEN '3000'
+	ELSE '<3000'
+END AS Price
+from Books
+
+
