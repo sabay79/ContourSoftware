@@ -543,6 +543,15 @@ select CONCAT(c.FirstName, c.LastName) as Customer , b.Title Book, a.FirstName A
 	from Books b, Authors a, Publishers p, Customers c, Orders o, OrderItem oi
 		where oi.BookID=b.ID AND oi.OrderID=o.ID AND o.CustomerID=c.ID AND b.AuthorID=a.ID AND b.PublisherID=p.ID
 			order by b.Title
+select CONCAT(c.FirstName, c.LastName) as Customer , b.Title Book, a.FirstName Author, p.Name Publisher, b.Year as 'Year of Publication', b.Price Price, oi.Quantity Qty, (b.Price*oi.Quantity) TotalPrice
+	INTO CustomerDeliveryInfo_JOIN
+	from Books b
+	INNER JOIN Authors a ON a.ID = b.AuthorID
+	INNER JOIN Publishers p ON p.ID = b.PublisherID
+	INNER JOIN OrderItem oi ON oi.BookID = b.ID
+	INNER JOIN Orders o ON o.ID = oi.OrderID
+	INNER JOIN Customers c ON c.ID = o.CustomerID
+	order by b.Title
 
 -- The INSERT INTO SELECT statement copies data from one table and inserts it into another table --
 -- INSERT INTO Customers (CustomerName, City, Country)
