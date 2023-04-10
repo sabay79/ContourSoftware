@@ -580,3 +580,18 @@ CREATE TABLE AuthorBook
 	FOREIGN KEY (AuthorID) REFERENCES Authors(ID),
 	FOREIGN KEY (BookID) REFERENCES Books(ID)
 )
+-- Query Data via Join
+Select b.Title as Book, concat(a.FirstName, a.LastName) as "Author(s)"
+from Authors a
+INNER JOIN AuthorBook ab ON ab.AuthorID = a.ID
+INNER JOIN Books b on b.ID = ab.BookID
+order by b.Title
+
+-- Query Data via Subquery
+Select b.Title as Book
+from Books b
+Where b.ID IN
+			(
+				Select BookID From AuthorBook ab
+				Where AuthorID = 2
+			)
