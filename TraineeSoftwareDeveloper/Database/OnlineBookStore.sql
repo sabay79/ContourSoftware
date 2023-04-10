@@ -571,3 +571,12 @@ Use OnlineBookStore
 -- 1) Truncate Table Data
 	Alter Table Books
 	Drop Column AuthorID
+
+CREATE TABLE AuthorBook 
+(
+	AuthorID INT,
+	BookID INT,
+	PRIMARY KEY (AuthorID, BookID),
+	FOREIGN KEY (AuthorID) REFERENCES Authors(ID),
+	FOREIGN KEY (BookID) REFERENCES Books(ID)
+)
