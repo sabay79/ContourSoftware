@@ -543,6 +543,7 @@ select CONCAT(c.FirstName, c.LastName) as Customer , b.Title Book, a.FirstName A
 	from Books b, Authors a, Publishers p, Customers c, Orders o, OrderItem oi
 		where oi.BookID=b.ID AND oi.OrderID=o.ID AND o.CustomerID=c.ID AND b.AuthorID=a.ID AND b.PublisherID=p.ID
 			order by b.Title
+
 select CONCAT(c.FirstName, c.LastName) as Customer , b.Title Book, a.FirstName Author, p.Name Publisher, b.Year as 'Year of Publication', b.Price Price, oi.Quantity Qty, (b.Price*oi.Quantity) TotalPrice
 	INTO CustomerDeliveryInfo_JOIN
 	from Books b
@@ -565,4 +566,8 @@ CASE
 END AS Price
 from Books
 
-
+Use OnlineBookStore
+-- Authors & Books M2M
+-- 1) Truncate Table Data
+	Alter Table Books
+	Drop Column AuthorID
