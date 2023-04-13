@@ -36,7 +36,7 @@ decimal g = 2.5M;
 Console.WriteLine($"{nameof(g)}\t\t{g}\t\t{g.GetType()}\t\t{decimal.MinValue}\t{decimal.MaxValue}");
 
 // 1.6: Boolean
-bool  h = true;
+bool h = true;
 Console.WriteLine($"{nameof(h)}\t\t{h}\t\t{h.GetType()}");
 
 // 2: ENUM TYPES
