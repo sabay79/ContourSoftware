@@ -61,7 +61,7 @@ var coordsStruct = new Coords(3.5, 3.5);
 //Console.WriteLine(k.ToString());
 Console.WriteLine($"{nameof(coordsStruct)}\t{coordsStruct}\t{coordsStruct.GetType()}");
 
-// 4: Nullable Value TYpes
+// 4: NULLABLE VALUE TYPES
 // A nullable value type T? represents all values of its underlying value type T and an additional null value.
 // For example, you can assign any of the following three values to a bool? variable: true, false, or null.
 // An underlying value type T cannot be a nullable value type itself.
@@ -81,7 +81,29 @@ bool flagNullCoalescing = flag ?? true;
 
 // II. Use the Nullable<T>.GetValueOrDefault() method
 //bool temp = flag; // Doesn't compile
-bool flagNummalbleT = (bool)flag;  // Compiles, but throws an exception if flag is null
+//bool flagNummalbleT = (bool)flag;  // Compiles, but throws an exception if flag is null
+
+// 5: TUPLE VALUE TYPES
+// The tuples feature provides concise syntax to group multiple data elements in a lightweight data structure.
+(string, int) person = ("Saba", 23);
+Console.WriteLine($"{nameof(person)}\t\t{person}\t{person.GetType()}");
+//Console.WriteLine($"Name: {person.Item1} \nAge {person.Item2}");
+
+//(string name, int age) person1 = ("Saba", 23);
+//Console.WriteLine($"Name: {person1.name} \nAge {person1.age}");
+
+// Tuple Use-case: Method return type
+(int min, int max) FindMinMax(int[] arr) => (arr.Min(), arr.Max());
+int[] array4Tuple = { 10, 29, 38, 47, 56 };
+Console.WriteLine(FindMinMax(array4Tuple));
+
+/*
+System.ValueTuple types are value types. System.Tuple types are reference types.
+System.ValueTuple types are mutable. System.Tuple types are immutable.
+Data members of System.ValueTuple types are fields. Data members of System.Tuple types are properties.
+ */
+
+
 
 
 
