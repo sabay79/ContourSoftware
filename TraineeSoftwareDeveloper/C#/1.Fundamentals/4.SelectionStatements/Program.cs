@@ -6,7 +6,7 @@ int x = 50;
 
 // 1. If Statement without Else
 // An if statement without an else part executes its body only if a Boolean expression evaluates to true
-if (x % 2 == 0)
+if (x%2 == 0)
 {
     Console.WriteLine($"{x} is an even number");
 }
@@ -28,8 +28,8 @@ if (x == 0)
 {
     Console.WriteLine($"{x} is a zero");
 }
-else if (x % 2 == 0)
-{
+else if (x % 2 == 0) 
+{ 
     Console.WriteLine($"{x} is an even number");
 }
 else
@@ -43,11 +43,11 @@ int y = (int)((x % 2 == 0) ? Math.Sqrt(x) : x);
 Console.WriteLine(y);
 
 // 5. Switch
-switch (x)
+switch(x)
 {
     case > 0:
         Console.WriteLine("Positive Number"); break;
-    case < 0:
+    case < 0 :
         Console.WriteLine("Negative Number"); break;
     default:
         Console.WriteLine("Zero"); break;
@@ -80,13 +80,13 @@ switch (x)
 // A case guard must be a Boolean expression.
 // You specify a case guard after the 'when' keyword that follows a pattern
 int a = 18, b = 81;
-switch (a, b)
+switch(a,b)
 {
     case ( > 0, > 0) when a == b:
         Console.WriteLine($"Both numbers are valid and same: {a}");
         break;
-
-    case ( > 0, > 0):
+        
+    case(>0, >0):
         Console.WriteLine($"Number 1: {a} \nNumber 2: {b}");
         break;
 
