@@ -21,7 +21,7 @@ Console.WriteLine("Square of Greatest Number is " + maxSquare);
 // https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/query-keywords
 var scores = new[] { 10, 20, 50, 90, 70, 80 };
 IEnumerable<int> highScoresQuery =
-    from score  in scores
+    from score in scores
     where score > 50
     orderby score descending
     select score;
