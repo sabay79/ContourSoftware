@@ -138,6 +138,58 @@ internal class Program
         Console.WriteLine();
         foreach (KeyValuePair<int, string> kvp in person)
             Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+
+        // 1.2. List<T>	
+        // Collection of strongly typed objects that can be accessed by index and having methods for sorting, searching, and modifying list.
+        List<Student> students = new List<Student>();
+
+        // Add Students to List
+        students.Add(new Student() { ID = 1, Name = "A" });
+        students.Add(new Student() { ID = 2, Name = "B" });
+        students.Add(new Student() { ID = 3, Name = "C" });
+
+        // Write out the students in the list. This will call the overridden ToString method in the Part class.
+        foreach (Student student in students)
+        {
+            Console.WriteLine(student);
+        }
+
+        // Check the list for student #5. This calls the IEquatable.Equals method of the Student class, which checks the ID for equality.
+        Console.WriteLine("\nContains(\"5\"): {0}",
+        students.Contains(new Student { ID = 5, Name = "Saba" }));
+
+        // Insert a new item at position 2
+        students.Insert(2, new Student { ID = 4, Name = "X" });
+        foreach (Student student in students)
+        {
+            Console.WriteLine(student);
+        }
+
+        // This will remove Student 4 even though the Student Name is different, because the Equals method only checks ID for equality.
+        students.Remove(new Student() { ID = 4, Name = "XYZ" });
+        foreach (Student student in students)
+        {
+            Console.WriteLine(student);
+        }
+
+        // This will remove the part at index 2.
+        students.RemoveAt(2);
+        foreach (Student student in students)
+        {
+            Console.WriteLine(student);
+        }
+
+        // Capacity
+        // Gets or sets the total number of elements the internal data structure can hold without resizing
+        Console.WriteLine("\nCapacity: {0}", students.Capacity);
+
+        // Count
+        // Gets the number of elements contained in the List<T>
+        Console.WriteLine("Count: {0}", students.Count);
+
+        // Contains
+        // Determines whether an element is in the List<T>
+        Console.WriteLine("\nContains(\"Student\"): {0}", students.Contains(new Student() { ID = 1, Name = "A" }));
     }
 }
 
@@ -145,4 +197,35 @@ public class Person
 {
     public int Id { get; set; }
     public string? Name { get; set; }
+}
+
+public class Student : IEquatable<Student>
+{
+    public int ID { get; set; }
+    public string? Name { get; set; }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj == null) return false;
+        Student? objAsStudent = obj as Student;
+        if (objAsStudent == null)
+            return false;
+        else
+            return Equals(objAsStudent);
+    }
+    public bool Equals(Student? other)
+    {
+        if (other == null) return false;
+        return (this.ID.Equals(other.ID));
+    }
+    // Should also override == and != operators.
+
+    public override int GetHashCode()
+    {
+        return ID;
+    }
+    public override string ToString()
+    {
+        return $"ID: {ID}, Name: {Name}";
+    }
 }
