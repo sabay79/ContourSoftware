@@ -50,11 +50,12 @@ internal class Program
 
         // KINDS OF COLLECTIONS //
 
-        // 1. System.Collections.Generic Classes
+        // 1. System.Collections.Generic Classes //
+
         // A generic collection is useful when every item in the collection has the same data type.
         // A generic collection enforces strong typing by allowing only the desired data type to be added.
 
-        // Dictionary<TKey,TValue>	
+        // 1.1. Dictionary<TKey,TValue>	
         // Represents a collection of key/value pairs that are organized based on the key.
 
         // Create a new dictionary of strings, with int keys.
