@@ -193,6 +193,37 @@ internal class Program
         // Contains
         // Determines whether an element is in the List<T>
         Console.WriteLine("\nContains(\"Student\"): {0}", students.Contains(new Student() { ID = 1, Name = "A" }));
+
+        // 1.3. Queue<T>
+        // Represents a first-in, first-out collection of objects
+        Console.WriteLine("\nQUEUE");
+
+        Queue<int> numbers = new Queue<int>();
+
+        // Enqueue adds an element to the end of the Queue<T>
+        numbers.Enqueue(1);
+        numbers.Enqueue(2);
+        numbers.Enqueue(3);
+
+        // A queue can be enumerated without disturbing its contents.
+        foreach (int number in numbers)
+        {
+            Console.WriteLine(number);
+        }
+
+        // Dequeue removes the oldest element from the start of the Queue<T>
+        numbers.Dequeue();
+
+        // Peek
+        // Returns the oldest element that is at the start of the Queue<T> but does not remove it from the Queue<T>
+        Console.WriteLine(numbers.Peek());
+        
+        /* The capacity of a Queue<T> is the number of elements the Queue<T> can hold. 
+         * As elements are added to a Queue<T>, the capacity is automatically increased as required by reallocating the internal array. 
+         * The capacity can be decreased by calling TrimExcess. */
+
+        // Queue<T> accepts null as a valid value for reference types and allows duplicate elements.
+
     }
 }
 
