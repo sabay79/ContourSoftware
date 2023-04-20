@@ -57,6 +57,7 @@ internal class Program
 
         // 1.1. Dictionary<TKey,TValue>	
         // Represents a collection of key/value pairs that are organized based on the key.
+        Console.WriteLine("\nDICTIONARY");
 
         // Create a new dictionary of strings, with int keys.
         Dictionary<int, string> person = new();
@@ -141,6 +142,8 @@ internal class Program
 
         // 1.2. List<T>	
         // Collection of strongly typed objects that can be accessed by index and having methods for sorting, searching, and modifying list.
+        Console.WriteLine("\nLIST");
+
         List<Student> students = new List<Student>();
 
         // Add Students to List
