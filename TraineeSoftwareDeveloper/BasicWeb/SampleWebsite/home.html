@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sample Website</title>
+
+  <link rel="stylesheet" href="home.css">
+</head>
+<body class="light-theme">
+    <h1>Task List</h1>
+    <p>Current Tasks:</p>
+    <ul>
+        <li class="list">Add Visual Styles</li>
+        <li class="list">Add Light & Dark Themes</li>
+        <li>Enable Switching The Theme</li>
+    </ul>
+    <div>
+        <button class="btn">Drak</button>
+    </div>
+
+    <a href="https://learn.microsoft.com/en-gb/training/modules/get-started-with-web-development/7-summary">
+        <small>Reference</small>
+    </a>
+    <br>
+    <a href="https://learn.microsoft.com/en-gb/training/modules/web-development-101-accessibility/3-developer-tools">
+        <small>Ensuring accessibility with developer tools</small>
+    </a>
+    <br>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA">
+        <small>ARIA Attributes</small>
+    </a>
+    <!-- The <script> element could be placed in the <head> or elsewhere in the <body>. 
+        However, putting <script> element at the end of the <body> section enables all the page content to display on the screen first, and then load the script. -->
+    <script src="app.js"></script>
+    <!-- In your HTML file, add a <noscript> element after the closing </script> tag, which can be used to show a message if JavaScript is deactivated. -->
+        <noscript>Enable JavaScript to View Full Website</noscript>
+</body>
+</html>

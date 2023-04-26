@@ -1,0 +1,65 @@
+/* The :root selector represents the <html> element in the HTML page. 
+  For this kind of task, a best practice is to define a set of global CSS variables in a CSS rule with the :root selector. 
+  In this example, you've defined three color variables. 
+*/
+:root
+{
+    --green: #00FF00;
+    --white: #FFFFFF;
+    --black: #000000;
+}
+body
+{
+    background: var(--bg);
+    color: var(--fontColor);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ul
+{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+li
+{
+    list-style: circle;
+}
+
+.list
+{
+    list-style: square;
+}
+
+#msg
+{
+    font-family: monospace;
+}
+
+.light-theme 
+{
+    --bg: var(--green);
+    --fontColor: var(--black);
+    --btnBg: var(--black);
+    --btnFontColor: var(--white);
+}
+.dark-theme 
+{
+--bg: var(--black);
+--fontColor: var(--green);
+--btnBg: var(--white);
+--btnFontColor: var(--black);
+
+}
+
+.btn
+{
+    position: absolute;
+    top: 20px;
+    left: 250px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: none;
+    color: var(--btnFontColor);
+    background-color: var(--btnBg);
+}
