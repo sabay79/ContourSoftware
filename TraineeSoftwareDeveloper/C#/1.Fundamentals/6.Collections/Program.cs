@@ -217,7 +217,7 @@ internal class Program
         // Peek
         // Returns the oldest element that is at the start of the Queue<T> but does not remove it from the Queue<T>
         Console.WriteLine(numbers.Peek());
-        
+
         /* The capacity of a Queue<T> is the number of elements the Queue<T> can hold. 
          * As elements are added to a Queue<T>, the capacity is automatically increased as required by reallocating the internal array. 
          * The capacity can be decreased by calling TrimExcess. */
