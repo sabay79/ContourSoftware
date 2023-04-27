@@ -45,8 +45,9 @@
             <td>@pizza.Name</td>
             <td>@($"{pizza.Price:C}")</td>
             <td>@pizza.Size</td>
+            <td>@Model.GlutenFree(pizza)</td>
             <td>
-                <form method="post" asp-asp-page-handler="Delete" asp-route-id="@pizza.ID">
+                <form method="post" asp-page-handler="Delete" asp-route-id="@pizza.ID">
                     <button class="btn btn-danger">Delete</button>
                 </form>
             </td>
