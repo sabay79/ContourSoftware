@@ -1,0 +1,59 @@
+PS C:\...\TraineeSoftwareDeveloper\ASP.NET\WebAPIPizza> httprepl
+(Disconnected)> connect http://localhost:5087 --openapi /swagger/v1/swagger.json 
+Checking http://localhost:5087/swagger/v1/swagger.json... Found
+Parsing... Successful
+
+Using a base address of http://localhost:5087/
+Using OpenAPI description at http://localhost:5087/swagger/v1/swagger.json
+For detailed tool info, see https://aka.ms/http-repl-doc
+
+http://localhost:5087/> ls
+.                 []
+WeatherForecast   [GET]
+
+http://localhost:5087/> cd WeatherForecast
+/WeatherForecast    [GET]
+
+http://localhost:5087/WeatherForecast> get
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Thu, 27 Apr 2023 12:16:25 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+
+[
+  {
+    "date": 4/28/2023 5:16:25 PM,
+    "temperatureC": -4,
+    "temperatureF": 25,
+    "summary": "Scorching"
+  },
+  {
+    "date": 4/29/2023 5:16:25 PM,
+    "temperatureC": 38,
+    "temperatureF": 100,
+    "summary": "Scorching"
+  },
+  {
+    "date": 4/30/2023 5:16:25 PM,
+    "temperatureC": 54,
+    "temperatureF": 129,
+    "summary": "Chilly"
+  },
+  {
+    "date": 5/1/2023 5:16:25 PM,
+    "temperatureC": 54,
+    "temperatureF": 129,
+    "summary": "Chilly"
+  },
+  {
+    "date": 5/2/2023 5:16:25 PM,
+    "temperatureC": 41,
+    "temperatureF": 105,
+    "summary": "Warm"
+  }
+]
+
+
+http://localhost:5087/WeatherForecast> exit
+PS C:\...\TraineeSoftwareDeveloper\ASP.NET\WebAPIPizza>
