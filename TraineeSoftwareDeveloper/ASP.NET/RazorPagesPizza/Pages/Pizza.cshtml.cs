@@ -24,7 +24,7 @@ namespace RazorPagesPizza.Pages
         {
             return pizza.IsGlutenFree ? "Gluten Free" : "Not Gluten Free";
         }
-
+ 
         // Add an HTTP POST page handler to the PageModel //
         public IActionResult OnPost()
         {
