@@ -1,0 +1,28 @@
+Reference: https://learn.microsoft.com/en-us/training/modules/dotnet-dependencies/4-dependency-management
+
+Use semantic versioning
+There's an industry standard called semantic versioning. Semantic versioning is how you express the type of change that you or some other developer is introducing to a library. Semantic versioning works by ensuring that a package has a version number, and that the version number is divided into these sections:
+
+Major version: The leftmost number. For example, it's the 1 in 1.0.0. A change to this number means that you can expect breaking changes in code. You might need to rewrite part of your code.
+Minor version: The middle number. For example, it's the 2 in 1.2.0. A change to this number means that features have been added. Your code should still work. It's generally safe to accept the update.
+Patch version: The rightmost number. For example, it's the 3 in 1.2.3. A change to this number means that a change has been applied that fixes something in the code that should have worked. It should be safe to accept the update.
+This table illustrates how the version-number changes for each version type:
+
+Type	        What happens
+Major version	1.0.0 changes to 2.0.0
+Minor version	1.1.1 changes to 1.2.0
+Patch version	1.0.1 changes to 1.0.2
+
+Many companies and developers have adopted this system. If you intend to publish packages and push them to the NuGet registry, you should follow semantic versioning; it's expected. Even if you only download packages from the NuGet registry, you can expect these packages to follow semantic versioning.
+
+Changes to a package can introduce risk, including the risk that a bug might harm your business. Some risks might require you to rewrite part of your code. Rewriting code takes time and costs money.
+
+Update approach
+As a .NET developer, you can communicate the update behavior that you want to .NET. Think about updating in terms of risk. Here are some approaches:
+
+Major version: I'm OK with updating to the latest major version as soon as it's out. I accept the fact that I might need to change code on my end.
+Minor version: I'm OK with a new feature being added. I'm not OK with code that breaks.
+Patch version: The only updates I'm OK with are bug fixes.
+If you're managing a new or smaller .NET project, you can afford to be loose with how you define the update strategy. For example, you can always update to the latest version. For more complex projects, there's more nuance, but we'll save that for a future module.
+
+In general, the smaller the dependency you're updating, the fewer dependencies it has and the more likely that the update process will be easy.
