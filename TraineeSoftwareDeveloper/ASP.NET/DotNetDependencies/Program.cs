@@ -81,3 +81,38 @@ IEnumerable<string> FindFiles(string folderName)
     }
     return someFiles;
 }
+
+// Exercise - Work with paths //
+
+// 1. Find all .json files
+
+// Directory.GetCurrentDirectory method to obtain the path for the current directory 
+var currentDirectory = Directory.GetCurrentDirectory();
+
+// Path.Combine method to create the full path to the stores directory
+var launchDirectory = Path.Combine (currentDirectory, ".vscode");
+
+var launchFiles = FindFiles(launchDirectory);
+
+foreach(var file in launchFiles)
+    Console.WriteLine(file);
+
+// 2. Find all .json files
+    
+foreach (var file in launchFiles)
+{
+    Console.WriteLine(file);
+}
+IEnumerable<string> FindFiles1(string folderName)
+{
+    List<string> someFiles = new List<string>();
+    var foundFiles = Directory.EnumerateFiles(folderName, "*", SearchOption.AllDirectories);
+
+    foreach(var file in foundFiles)
+    {
+        var extension = Path.GetExtension(file);
+        if(extension == ".json")
+            someFiles.Add(file);
+    }
+    return someFiles;
+}
