@@ -1,4 +1,5 @@
-﻿using Humanizer;
+﻿using System.Diagnostics;
+using Humanizer;
 
 Console.WriteLine("The developers at Tailwind Traders realize that they're about to put extensive resources into developing apps for the .NET platform. These apps are going to display human-readable data to users, including dates, times, and numbers.\n" +
 ".NET has the capabilities to do this, but the developers are certain someone has solved this problem. They need a framework. After some searching, they've found Humanizer in the NuGet package registry. It seems to be widely used and promises to meet all of their .NET needs for manipulating and displaying strings, enumerations, dates, times, timespans, numbers, and quantities.\n" +
@@ -30,11 +31,15 @@ HumanizerDates();
 // DotNet Debugging //
 
 //Exercise - Debug with Visual Studio Code
-int result = Fibonacci(5);
+int result = Fibonacci(6);
 Console.WriteLine(result);
 
 static int Fibonacci(int n)
 {
+    // Exercise - Logging and tracing // 
+    Debug.WriteLine($"Entering {nameof(Fibonacci)} method");
+    Debug.WriteLine($"We're looking for {n}th number");
+
     int n1 = 0;
     int n2 = 1;
     int sum;
@@ -44,7 +49,12 @@ static int Fibonacci(int n)
         sum = n1 + n2;
         n1 = n2;
         n2 = sum;
+
+        Debug.WriteLineIf(sum==1, $"sum is 1, n1 is {n1}, n2 is {n2}");
+
     }
 
+    Debug.Assert(n2==5, "The return value is not 5 and it should be");
     return n == 0 ? n1 : n2;
 }
+
