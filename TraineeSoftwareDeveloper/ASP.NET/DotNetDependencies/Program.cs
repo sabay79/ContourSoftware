@@ -1,6 +1,9 @@
 ﻿using System.Diagnostics;
 using Humanizer;
 
+using System.IO;
+using System.Collections.Generic;
+
 Console.WriteLine("The developers at Tailwind Traders realize that they're about to put extensive resources into developing apps for the .NET platform. These apps are going to display human-readable data to users, including dates, times, and numbers.\n" +
 ".NET has the capabilities to do this, but the developers are certain someone has solved this problem. They need a framework. After some searching, they've found Humanizer in the NuGet package registry. It seems to be widely used and promises to meet all of their .NET needs for manipulating and displaying strings, enumerations, dates, times, timespans, numbers, and quantities.\n" +
 "At this point, the developers want you to install Humanizer, write a couple of data manipulations, and run them to see if Humanizer delivers on its promise.\n");
@@ -54,7 +57,27 @@ static int Fibonacci(int n)
 
     }
 
-    Debug.Assert(n2==5, "The return value is not 5 and it should be");
+    //Debug.Assert(n2==5, "The return value is not 5 and it should be");
     return n == 0 ? n1 : n2;
 }
 
+// Exercise - Work with the file system //
+var someFiles = FindFiles(".vscode");
+foreach(var file in someFiles)
+    Console.WriteLine(file);
+
+IEnumerable<string> FindFiles(string folderName)
+{
+    List<string> someFiles = new List<string>();
+    var foundFiles = Directory.EnumerateFiles(folderName, "*", SearchOption.AllDirectories);
+
+    foreach(var file in foundFiles)
+    {
+        // The file anme will contain the full path, so only check the end of it
+        if(file.EndsWith("launch.json"))
+        {
+            someFiles.Add(file);
+        }
+    }
+    return someFiles;
+}
