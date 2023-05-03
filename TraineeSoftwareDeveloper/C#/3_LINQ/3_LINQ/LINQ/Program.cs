@@ -10,15 +10,15 @@
 
 // Standard query operators: Where, Select, GroupBy, Join, Max, and Average
 
-// Specify the Data Soource
+// 1. Specify the Data Soource
 int[] scores = { 97, 92, 81, 60 };
 
-// Define Query Expression
+// 2. Define Query Expression
 IEnumerable<int> scoreQuery = from score in scores
                               where score > 70
                               select score;
 
-// Execute the query
+// 3. Execute the query
 foreach (int temp in scoreQuery)
     Console.Write(temp + " ");
 
@@ -109,9 +109,18 @@ IEnumerable<int> numQuery2 = numbers.Where(num => num % 2 == 0)
     .OrderBy(num => num);
 
 
+
 // Execute the query
 foreach (var temp in numQuery2)
     Console.Write(temp + " ");
+
+
+/*
+ Query expressions can be compiled to expression trees or to delegates, depending on the type that the query is applied to. 
+ IEnumerable<T> queries are compiled to delegates. 
+ IQueryable and IQueryable<T> queries are compiled to expression trees.
+ */
+
 
 
 public class Person
