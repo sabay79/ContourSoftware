@@ -45,15 +45,47 @@ var peopleQuery = from p in people
 // LINQ query variables are typed as IEnumerable<T> or a derived type such as IQueryable<T>.
 // When you see a query variable that is typed as IEnumerable<Customer>, it just means that the query,
 // when it is executed, will produce a sequence of zero or more Customer objects.
- IEnumerable<Person> personQuery = from p in people
-                                   where p.ID != 0
-                                   select p;
+IEnumerable<Person> personQuery = from p in people
+                                  where p.ID != 0
+                                  select p;
 
 // 2. Letting the Compiler Handle Generic Type Declarations
 // Use 'var' instead of 'IEnumerable<Person>'
 
+// Standard Query Operators Overview (C#) //
+// https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/standard-query-operators-overview
 
+// The standard query operators are the methods that form the LINQ pattern. 
+// The standard query operators provide query capabilities including filtering, projection, aggregation, sorting and more.
+// There are two sets of LINQ standard query operators:
+// - one that operates on objects of type IEnumerable<T>,
+// - another that operates on objects of type IQueryable<T>.
+// The standard query operators differ in the timing of their execution, depending on whether they return a singleton value or a sequence of values. 
 
+string sentence = "The quick brown fox jumps over the lazy dog";
+// Split the strings into individual words to create a collection
+string[] words = sentence.Split(' ');
+
+// Using Query Expresson Syntax
+var query1 = from word in words
+             group word.ToUpper() by words.Length into gr
+             orderby gr.Key
+             select new { Length = gr.Key, Words = gr };
+
+// Using Method-Based Query Syntax
+var query2 = words.
+    GroupBy(w => w.Length, w => w.ToUpper()).
+    Select(g => new { Length = g.Key, Words = g }).
+    OrderBy(o => o.Length);
+
+foreach (var obj in query1)
+{
+    Console.WriteLine("Words of Length {0}:", obj.Length);
+    foreach (string word in obj.Words)
+    {
+        Console.WriteLine(word);
+    }
+}
 // Execute the query
 foreach (var temp in personQuery)
     Console.Write(temp.Name + " ");
