@@ -6,6 +6,7 @@
 // Furthermore, you have to learn a different query language for each type of data source: SQL databases, XML documents, various Web services, and so on. 
 // With LINQ, a query is a first-class language construct, just like classes, methods, events. You write queries against strongly typed collections of objects by using language keywords and familiar operators. 
 // he LINQ family of technologies provides a consistent query experience for objects (LINQ to Objects), relational databases (LINQ to SQL), and XML (LINQ to XML).
+// LINQ queries are based on generic types
 
 // Specify the Data Soource
 int[] scores = { 97, 92, 81, 60 };
@@ -19,7 +20,7 @@ IEnumerable<int> scoreQuery = from score in scores
 foreach (int temp in scoreQuery)
     Console.Write(temp + " ");
 
-// C# Features That Support LINQ
+// C# Features That Support LINQ //
 // https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/features-that-support-linq?source=recommendations
 
 string[] stringArray = { "Pakistan", "Saudi Arabia", "Bangladesh", "UAE" };
@@ -34,11 +35,27 @@ var person = new Person { ID = 3, Name = "Nayab" };
 PersonService.Add(person);
 var people = PersonService.GetAll();
 var peopleQuery = from p in people
-        where p.ID > 1
-        select p;
+                  where p.ID > 1
+                  select p;
+
+// LINQ and Generic Types (C#) //
+// https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/linq-and-generic-types?source=recommendations
+
+// 1. IEnumerable<T> variables in LINQ Queries
+// LINQ query variables are typed as IEnumerable<T> or a derived type such as IQueryable<T>.
+// When you see a query variable that is typed as IEnumerable<Customer>, it just means that the query,
+// when it is executed, will produce a sequence of zero or more Customer objects.
+ IEnumerable<Person> personQuery = from p in people
+                                   where p.ID != 0
+                                   select p;
+
+// 2. Letting the Compiler Handle Generic Type Declarations
+// Use 'var' instead of 'IEnumerable<Person>'
+
+
 
 // Execute the query
-foreach (var temp in peopleQuery)
+foreach (var temp in personQuery)
     Console.Write(temp.Name + " ");
 
 
