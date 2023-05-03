@@ -8,6 +8,8 @@
 // he LINQ family of technologies provides a consistent query experience for objects (LINQ to Objects), relational databases (LINQ to SQL), and XML (LINQ to XML).
 // LINQ queries are based on generic types
 
+// Standard query operators: Where, Select, GroupBy, Join, Max, and Average
+
 // Specify the Data Soource
 int[] scores = { 97, 92, 81, 60 };
 
@@ -78,6 +80,12 @@ var query2 = words.
     Select(g => new { Length = g.Key, Words = g }).
     OrderBy(o => o.Length);
 
+/*
+ * As a rule when you write LINQ queries, we recommend that you use query syntax whenever possible and method syntax whenever necessary. 
+ * There is no semantic or performance difference between the two different forms. 
+ * Query expressions are often more readable than equivalent expressions written in method syntax.
+ */
+
 foreach (var obj in query1)
 {
     Console.WriteLine("Words of Length {0}:", obj.Length);
@@ -86,10 +94,24 @@ foreach (var obj in query1)
         Console.WriteLine(word);
     }
 }
-// Execute the query
-foreach (var temp in personQuery)
-    Console.Write(temp.Name + " ");
 
+// Query Syntax and Method Syntax in LINQ (C#) //
+// https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/query-syntax-and-method-syntax-in-linq
+
+int[] numbers = { 5, 10, 15, 20, 25 };
+// Query Syntax:
+IEnumerable<int> numQuery1 = from num in numbers
+                             where num % 2 == 0
+                             orderby num
+                             select num;
+// Method Syntax:
+IEnumerable<int> numQuery2 = numbers.Where(num => num % 2 == 0)
+    .OrderBy(num => num);
+
+
+// Execute the query
+foreach (var temp in numQuery2)
+    Console.Write(temp + " ");
 
 
 public class Person
