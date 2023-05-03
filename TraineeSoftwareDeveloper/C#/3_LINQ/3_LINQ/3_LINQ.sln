@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3_LINQ", "3_LINQ\3_LINQ.csproj", "{AF76C84A-4023-4785-8795-62066E06E7EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ", "LINQ\LINQ.csproj", "{6CB3050B-9AAB-42A9-A845-839ED8C68BE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AF76C84A-4023-4785-8795-62066E06E7EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AF76C84A-4023-4785-8795-62066E06E7EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AF76C84A-4023-4785-8795-62066E06E7EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AF76C84A-4023-4785-8795-62066E06E7EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CB3050B-9AAB-42A9-A845-839ED8C68BE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CB3050B-9AAB-42A9-A845-839ED8C68BE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CB3050B-9AAB-42A9-A845-839ED8C68BE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CB3050B-9AAB-42A9-A845-839ED8C68BE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7CB777CF-D5F2-4948-A494-FA85AB1C3CA8}
+		SolutionGuid = {D0C4C3A0-50E7-47E6-ABE8-F5C69C3E93A4}
 	EndGlobalSection
 EndGlobal
