@@ -190,6 +190,25 @@ foreach (var city in cityQuery)
 
 // Ending a query expression //
 // A query expression must end with either a group clause or a select clause.
+
+// GROUP CLAUSE //
+// Use the group clause to produce a sequence of groups organized by a key that you specify.
+// The key can be any data type.
+var queryCountryGroups = from country in countries
+                         group country by country.Name[0];
+
+// SELECT CLAUSE //
+// Use the select clause to produce all other types of sequences.
+// A simple select clause just produces a sequence of the same type of objects as the objects that are contained in the data source. 
+IEnumerable<Country> sortedQuery = from country in countries
+                                   orderby country.ID
+                                   select country;
+// The select clause can be used to transform source data into sequences of new types.
+// This transformation is also named a projection. 
+// In the following example, the select clause projects a sequence of anonymous types which contains only a subset of the fields in the original element.
+// Note that the new objects are initialized by using an object initializer.
+var queryNameAndPop = from country in countries
+                      select new { Name = country.Name, CountryID = country.ID, Cities = country.Cities };
 public class Person
 {
     public int ID { get; set; }
