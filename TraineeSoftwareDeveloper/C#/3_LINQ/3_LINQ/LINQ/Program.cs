@@ -210,7 +210,8 @@ IEnumerable<Country> sortedQuery = from country in countries
 var queryNameAndPop = from country in countries
                       select new { Name = country.Name, CountryID = country.ID, Cities = country.Cities };
 
-// Continuations with into //
+// Continuations with into & let clause //
+// Use the let clause to store the result of an expression, such as a method call, in a new range variable.
 // You can use the into keyword in a select or group clause to create a temporary identifier that stores a query.
 // Do this when you must perform additional query operations on a query after a grouping or select operation.
 /*
@@ -236,8 +237,38 @@ foreach (var grouping in percentileQuery)
     }
 }
 
+// Join clause //
+// Use the join clause to associate and/or combine elements from one data source with elements from another data source based on an equality comparison between specified keys in each element.
 
+var categoryList = new CategoryList();
+var categories = categoryList.GetAll();
 
+var productList = new ProductList();
+var products = productList.GetAll();
+
+var categoryQuery = from cat in categories
+                    join prod in products on cat.ID equals prod.CategoryID
+                    select new
+                    {
+                        Category = cat.Name,
+                        Product = prod.Name
+                    };
+
+// Subqueries in a query expression //
+// A query clause may itself contain a query expression, which is sometimes referred to as a subquery.
+// The following query shows a query expression that is used in the select statement to retrieve the results of a grouping operation.
+var queryGroupMax = from product in products
+                    group product by product.CategoryID into productGroup
+                    select new
+                    {
+                        Level = productGroup.Key,
+                        HighestPrice = (from product2 in productGroup
+                                        select product2.Price).Max()
+                    };
+foreach (var group in queryGroupMax)
+{
+    Console.WriteLine(group.Level + ":" + group.HighestPrice);
+}
 public class Person
 {
     public int ID { get; set; }
@@ -292,4 +323,58 @@ public static class CountrySevice
         nextID++;
     }
 
+}
+
+public class Category
+{
+    public int ID { get; set; }
+    public string Name { get; set; }
+}
+public class Product
+{
+    public int ID { get; set; }
+    public string Name { get; set; }
+    public int Price { get; set; }
+    public int CategoryID { get; set; }
+}
+public class CategoryList
+{
+    public List<Category> Categories { get; set; }
+    public int nextID = 2;
+    public CategoryList()
+    {
+        Categories = new List<Category>
+        {
+            new Category { ID = 1, Name="A" },
+            new Category { ID = 2, Name="B" }
+        };
+    }
+    public List<Category> GetAll() => Categories;
+    public void Add(Category category)
+    {
+        category.ID = nextID;
+        Categories.Add(category);
+    }
+}
+public class ProductList
+{
+    public List<Product> Products { get; set; }
+    public int nextID = 2;
+    public ProductList()
+    {
+        Products = new List<Product>
+        {
+            new Product { ID = 1, Name = "A1", Price = 1000, CategoryID = 1},
+            new Product { ID = 2, Name = "A2", Price = 2200, CategoryID = 1},
+            new Product { ID = 3, Name = "A3", Price = 3500, CategoryID = 1},
+            new Product { ID = 4, Name = "B1", Price = 2100, CategoryID = 2},
+            new Product { ID = 4, Name = "B2", Price = 5200, CategoryID = 2},
+        };
+    }
+    public List<Product> GetAll() => Products;
+    public void Add(Product product)
+    {
+        product.ID = nextID;
+        Products.Add(product);
+    }
 }
