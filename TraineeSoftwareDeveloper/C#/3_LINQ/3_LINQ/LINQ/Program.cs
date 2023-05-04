@@ -209,6 +209,35 @@ IEnumerable<Country> sortedQuery = from country in countries
 // Note that the new objects are initialized by using an object initializer.
 var queryNameAndPop = from country in countries
                       select new { Name = country.Name, CountryID = country.ID, Cities = country.Cities };
+
+// Continuations with into //
+// You can use the into keyword in a select or group clause to create a temporary identifier that stores a query.
+// Do this when you must perform additional query operations on a query after a grouping or select operation.
+/*
+ * In the following example countries are grouped according to population in ranges of 10 million. 
+ * After these groups are created, additional clauses filter out some groups, and then to sort the groups in ascending order. 
+ * To perform those additional operations, the continuation represented by countryGroup is required.
+ */
+
+// percentileQuery is an IEnumerable<IGrouping<int, Country>>
+var percentileQuery = from country in countries
+                      let percentile = (int)country.Population / 10000000
+                      group country by percentile into countryGroup
+                      where countryGroup.Key >= 10
+                      orderby countryGroup.Key
+                      select countryGroup;
+// Grouping is an IGrouping<int, Country>
+foreach (var grouping in percentileQuery)
+{
+    Console.WriteLine(grouping.Key);
+    foreach (var country in grouping)
+    {
+        Console.WriteLine(country.Name + ":" + country.Population);
+    }
+}
+
+
+
 public class Person
 {
     public int ID { get; set; }
@@ -241,6 +270,7 @@ public class Country
 {
     public int ID { get; set; }
     public string? Name { get; set; }
+    public int Population { get; set; }
     public List<string>? Cities { get; set; }
 }
 public static class CountrySevice
@@ -251,7 +281,7 @@ public static class CountrySevice
     {
         Countries = new List<Country>()
         {
-            new Country { ID = 1, Name = "Pakistan", Cities = new List<string> { "Islamabad", "Lahore", "Karachi" } }
+            new Country { ID = 1, Name = "Pakistan", Population=220026789, Cities = new List<string> { "Islamabad", "Lahore", "Karachi" } }
         };
     }
     public static List<Country> GetAll() => Countries;
