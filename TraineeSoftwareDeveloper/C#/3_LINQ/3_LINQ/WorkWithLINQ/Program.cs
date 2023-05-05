@@ -7,29 +7,37 @@ namespace WorkWithLINQ
     {
         static void Main()
         {
+            //IEnumerable<Suit>? suits = Suits();
+            //IEnumerable<Rank>? ranks = Ranks();
+            var suits = Suits();
+            var ranks = Ranks();
+
+            if ((suits is null) || (ranks is null))
+                return;
+
             // 2. Create Deck of Cards //
             // Query for building the deck
             // Query Syntax
-            var startingDeck = from s in Suits()
-                               from r in Ranks()
-                               select new
-                               {
-                                   Suit = s,
-                                   Rank = r
-                               };
+            var startingDeck = (from s in suits.LogQuery("Suit Generation")
+                                from r in ranks.LogQuery("Rank Generation")
+                                select new
+                                {
+                                    Suit = s,
+                                    Rank = r
+                                }).LogQuery("Starting Deck");
             // Method Syntax
-            var startingDeckMethod = Suits().SelectMany(
-                                                        suit => Ranks().Select(
-                                                            rank => new
-                                                            {
-                                                                Suit = suit,
-                                                                Rank = rank
-                                                            })
-                                                        );
+            //var startingDeckMethod = suits.SelectMany(
+            //                                            suit => ranks.Select(
+            //                                                rank => new
+            //                                                {
+            //                                                    Suit = suit,
+            //                                                    Rank = rank
+            //                                                })
+            //                                            );
             // Execution
-            foreach (var s in startingDeckMethod)
+            foreach (var c in startingDeck)
             {
-                Console.WriteLine(s);
+                Console.WriteLine(c);
             }
 
             // 3. Manipulate the Order //
@@ -51,8 +59,19 @@ namespace WorkWithLINQ
             shuffle = startingDeck;
             do
             {
-                //shuffle = shuffle.Take(26).InterleaveSequenceWith(shuffle.Skip(26)); //8-iterations
-                shuffle = shuffle.Skip(26).InterleaveSequenceWith(shuffle.Take(26)); //52-iterations
+                // Out Shuffle - where the top and bottom cards stay the same on each run. 
+
+                shuffle = shuffle.Take(26).LogQuery("Top Half")
+                    .InterleaveSequenceWith(shuffle.Skip(26)).LogQuery("Bottom Half")
+                    .LogQuery("Shuffle"); //8-iterations
+
+
+                // In Shuffle - where the top and bottom cards stay the same on each run. 
+                /*
+                shuffle = shuffle.Skip(26).LogQuery("Bottom Half")
+                    .InterleaveSequenceWith(shuffle.Take(26)).LogQuery("Top Half")
+                    .LogQuery("Shuffle"); //52-iterations
+                */
                 foreach (var card in shuffle)
                 {
                     Console.WriteLine(card);
@@ -60,7 +79,7 @@ namespace WorkWithLINQ
                 Console.WriteLine();
                 times++;
             } while (!startingDeck.SequenceEqual(shuffle));
-            Console.WriteLine(times);
+            Console.WriteLine("No. of Shuffles: " + times);
         }
 
         // 1. Create the Data Set //
