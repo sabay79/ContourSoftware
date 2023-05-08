@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework", "EntityFramework\EntityFramework.csproj", "{6F645D53-7496-459D-AD89-BB6F28CDDC0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFramework", "EntityFramework\EntityFramework.csproj", "{6F645D53-7496-459D-AD89-BB6F28CDDC0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreSampleApp", "EFCoreSampleApp\EFCoreSampleApp.csproj", "{14D8767A-9434-44DB-AE82-BAD179379BD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoreSampleApp", "EFCoreSampleApp\EFCoreSampleApp.csproj", "{14D8767A-9434-44DB-AE82-BAD179379BD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContosoPetsEFCore", "ContosoPetsEFCore\ContosoPetsEFCore.csproj", "{6FBABE77-F507-4C84-AC38-3395C60EDB64}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{14D8767A-9434-44DB-AE82-BAD179379BD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14D8767A-9434-44DB-AE82-BAD179379BD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14D8767A-9434-44DB-AE82-BAD179379BD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FBABE77-F507-4C84-AC38-3395C60EDB64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FBABE77-F507-4C84-AC38-3395C60EDB64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FBABE77-F507-4C84-AC38-3395C60EDB64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FBABE77-F507-4C84-AC38-3395C60EDB64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
