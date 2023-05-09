@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoreSampleApp", "EFCoreSa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContosoPetsEFCore", "ContosoPetsEFCore\ContosoPetsEFCore.csproj", "{6FBABE77-F507-4C84-AC38-3395C60EDB64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCoreReverseEngineering", "EFCoreReverseEngineering\EFCoreReverseEngineering.csproj", "{78DB675B-8EE4-4D61-AD6D-F852CA525916}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCoreReverseEngineering", "EFCoreReverseEngineering\EFCoreReverseEngineering.csproj", "{78DB675B-8EE4-4D61-AD6D-F852CA525916}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContosoUniversity", "ContosoUniversity\ContosoUniversity.csproj", "{AC40C5A4-F1C2-4AA2-B23A-27240AB3FE75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{78DB675B-8EE4-4D61-AD6D-F852CA525916}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78DB675B-8EE4-4D61-AD6D-F852CA525916}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78DB675B-8EE4-4D61-AD6D-F852CA525916}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC40C5A4-F1C2-4AA2-B23A-27240AB3FE75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC40C5A4-F1C2-4AA2-B23A-27240AB3FE75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC40C5A4-F1C2-4AA2-B23A-27240AB3FE75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC40C5A4-F1C2-4AA2-B23A-27240AB3FE75}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
