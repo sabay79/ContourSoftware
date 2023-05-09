@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <!--<Nullable>enable</Nullable>-->
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
 </Project>
+
+<!-- To eliminate the warnings from nullable reference types, remove the following line from the ContosoUniversity.csproj -->
