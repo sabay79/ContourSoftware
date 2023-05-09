@@ -1,0 +1,5 @@
+﻿Model with FluentAPI: 
+Scaffold-DbContext "Data Source = CRIBL-YASHFSAB1\SQLEXPRESS; Initial Catalog = AdventureWorks2019; Integrated Security = SSPI; TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir ModelWithFluentAPI -Context AdventureWorksDbContext
+
+Model with Annotations:
+Scaffold-DbContext "Data Source = CRIBL-YASHFSAB1\SQLEXPRESS; Initial Catalog = AdventureWorks2019; Integrated Security = SSPI; TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir ModelWithAnnotation -Context AdventureWorksDbContext -DataAnnotations
