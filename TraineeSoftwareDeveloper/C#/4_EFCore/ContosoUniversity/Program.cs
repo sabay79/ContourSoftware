@@ -7,8 +7,15 @@ namespace ContosoUniversity
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            // The scaffolding tool automatically registered the context class with the dependency injection container.
             builder.Services.AddDbContext<ContosoUniversityContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("ContosoUniversityContext") ?? throw new InvalidOperationException("Connection string 'ContosoUniversityContext' not found.")));
+
+            // Add the database exception filter
+            // Requires - Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore -  provides ASP.NET Core middleware for Entity Framework Core error pages
+            // AddDatabaseDeveloperPageExceptionFilter provides helpful error information in the development environment for EF migrations errors
+            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             // Add services to the container.
             builder.Services.AddRazorPages();
@@ -21,6 +28,11 @@ namespace ContosoUniversity
                 app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
+            }
+            else
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseMigrationsEndPoint();
             }
 
             app.UseHttpsRedirection();
