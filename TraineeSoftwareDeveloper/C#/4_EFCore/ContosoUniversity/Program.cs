@@ -1,5 +1,6 @@
 ﻿using ContosoUniversity.Data;
 using Microsoft.EntityFrameworkCore;
+
 namespace ContosoUniversity
 {
     public class Program
@@ -34,6 +35,15 @@ namespace ContosoUniversity
                 app.UseDeveloperExceptionPage();
                 app.UseMigrationsEndPoint();
             }
+
+            // Create the database
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var context = services.GetRequiredService<ContosoUniversityContext>();
+                context.Database.EnsureCreated();
+            }
+            // Later in the tutorial series, the database is deleted that was created by EnsureCreated and migrations is used. A database that is created by EnsureCreated can't be updated by using migrations.
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
