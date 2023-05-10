@@ -21,7 +21,7 @@ namespace ContosoUniversity.Pages.Students
 
         public IList<Student> Students { get; set; } = default!;
 
-        public async Task OnGetAsync(string sortOrder)
+        public async Task OnGetAsync(string sortOrder, string searchString)
         {
             /*
              * The first line specifies that when sortOrder is null or empty, NameSort is set to name_desc. 
@@ -33,6 +33,13 @@ namespace ContosoUniversity.Pages.Students
             // The method uses LINQ to Entities to specify the column to sort by.
             IQueryable<Student> studentsIQ = from s in _context.Students
                                              select s;
+
+            // Add Filtering
+            CurrentFilter = searchString;
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                studentsIQ = studentsIQ.Where(s => s.Name.Contains(searchString));
+            }
 
             switch (sortOrder)
             {
