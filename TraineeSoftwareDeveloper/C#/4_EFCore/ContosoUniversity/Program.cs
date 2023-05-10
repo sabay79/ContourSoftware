@@ -42,8 +42,8 @@ namespace ContosoUniversity
                 var services = scope.ServiceProvider;
                 var context = services.GetRequiredService<ContosoUniversityContext>();
                 context.Database.EnsureCreated();
+                DbInitializer.Initialize(context);
             }
-            // Later in the tutorial series, the database is deleted that was created by EnsureCreated and migrations is used. A database that is created by EnsureCreated can't be updated by using migrations.
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
