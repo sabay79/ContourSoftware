@@ -8,10 +8,12 @@ namespace ContosoUniversity.Pages.Students
     public class IndexModel : PageModel
     {
         private readonly ContosoUniversityContext _context;
+        private readonly IConfiguration Configuration;
 
-        public IndexModel(ContosoUniversityContext context)
+        public IndexModel(ContosoUniversityContext context, IConfiguration configuration)
         {
             _context = context;
+            Configuration = configuration;
         }
 
         public string NameSort { get; set; }
@@ -19,10 +21,11 @@ namespace ContosoUniversity.Pages.Students
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
 
-        public IList<Student> Students { get; set; } = default!;
+        public PaginatedList<Student> Students { get; set; }
 
-        public async Task OnGetAsync(string sortOrder, string searchString)
+        public async Task OnGetAsync(string sortOrder, string searchString, string currentFilter, int? pageIndex)
         {
+            CurrentSort = sortOrder;
             /*
              * The first line specifies that when sortOrder is null or empty, NameSort is set to name_desc. 
              * If sortOrder is not null or empty, NameSort is set to an empty string.
@@ -30,13 +33,22 @@ namespace ContosoUniversity.Pages.Students
             NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             DateSort = sortOrder == "Date" ? "date_desc" : "Date";
 
+            if (searchString != null)
+            {
+                pageIndex = -1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
             // The method uses LINQ to Entities to specify the column to sort by.
             IQueryable<Student> studentsIQ = from s in _context.Students
                                              select s;
 
             // Add Filtering
             CurrentFilter = searchString;
-            if(!String.IsNullOrEmpty(searchString))
+            if (!String.IsNullOrEmpty(searchString))
             {
                 studentsIQ = studentsIQ.Where(s => s.Name.Contains(searchString));
             }
@@ -57,7 +69,9 @@ namespace ContosoUniversity.Pages.Students
                     break;
             }
 
-            Students = await studentsIQ.AsNoTracking().ToListAsync();
+            var pageSize = Configuration.GetValue("PageSize", 4);
+            Students = await PaginatedList<Student>
+                .CreateAsync(studentsIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
         }
     }
 }
