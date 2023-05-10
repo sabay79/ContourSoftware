@@ -23,7 +23,16 @@ namespace ContosoUniversity.Pages.Students
                 return NotFound();
             }
 
-            var student = await _context.Students.FirstOrDefaultAsync(m => m.ID == id);
+            // Read enrollment data for the selected student.
+            var student = await _context.Students
+                .Include(s => s.Enrollments)
+                .ThenInclude(e => e.Course)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
+
+            // The Include and ThenInclude methods cause the context to load the Student.Enrollments navigation property, and within each enrollment the Enrollment.Course navigation property.
+            // https://learn.microsoft.com/en-us/aspnet/core/data/ef-rp/read-related-data?view=aspnetcore-7.0&tabs=visual-studio
+
             if (student == null)
             {
                 return NotFound();
