@@ -1,3 +1,5 @@
+﻿using ContosoUniversity.Data;
+using Microsoft.EntityFrameworkCore;
 namespace ContosoUniversity
 {
     public class Program
@@ -5,6 +7,8 @@ namespace ContosoUniversity
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddDbContext<ContosoUniversityContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("ContosoUniversityContext") ?? throw new InvalidOperationException("Connection string 'ContosoUniversityContext' not found.")));
 
             // Add services to the container.
             builder.Services.AddRazorPages();
