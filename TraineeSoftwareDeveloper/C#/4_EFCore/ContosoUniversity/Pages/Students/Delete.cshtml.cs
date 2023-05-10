@@ -39,7 +39,7 @@ namespace ContosoUniversity.Pages.Students
             {
                 return NotFound();
             }
-            if(saveChangesError.GetValueOrDefault())
+            if (saveChangesError.GetValueOrDefault())
             {
                 ErrorMessage = String.Format($"Delete {id} failed. Try again.");
             }
@@ -59,7 +59,7 @@ namespace ContosoUniversity.Pages.Students
             {
                 return NotFound();
             }
-            
+
             try
             {
                 _context.Students.Remove(Student);
@@ -70,10 +70,10 @@ namespace ContosoUniversity.Pages.Students
             {
                 _logger.LogError(ex, ErrorMessage);
                 return RedirectToAction("./Delete", new
-                                                    {
-                                                        id,
-                                                        saveChangesError = true
-                                                    });
+                {
+                    id,
+                    saveChangesError = true
+                });
             }
         }
     }

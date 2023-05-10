@@ -27,11 +27,11 @@ namespace ContosoUniversity.Pages.Students
         {
             var emptyStudent = new Student();
 
-            if(await TryUpdateModelAsync<Student>(
-                emptyStudent, 
+            if (await TryUpdateModelAsync<Student>(
+                emptyStudent,
                 "student",  // Prefix for form value.
-                s =>s.Name,
-                s=>s.EnrollmentDate ))
+                s => s.Name,
+                s => s.EnrollmentDate))
             {
                 _context.Students.Add(emptyStudent);
                 await _context.SaveChangesAsync();

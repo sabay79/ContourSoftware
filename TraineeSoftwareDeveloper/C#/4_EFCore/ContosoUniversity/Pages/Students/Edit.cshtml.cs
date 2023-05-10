@@ -1,7 +1,6 @@
 ﻿using ContosoUniversity.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 
 namespace ContosoUniversity.Pages.Students
 {
@@ -28,7 +27,7 @@ namespace ContosoUniversity.Pages.Students
             // When you don't have to include related data, FindAsync is more efficient.
             Student = await _context.Students.FindAsync(id);
 
-            if(Student == null)
+            if (Student == null)
             {
                 return NotFound();
             }
@@ -41,7 +40,7 @@ namespace ContosoUniversity.Pages.Students
         {
             var studentToUpdate = await _context.Students.FindAsync(id);
 
-            if(studentToUpdate == null)
+            if (studentToUpdate == null)
             {
                 return NotFound();
             }
