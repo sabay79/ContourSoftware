@@ -1,4 +1,5 @@
-﻿using ContosoUniversity.Models;
+﻿using ContosoUniversity.Data;
+using ContosoUniversity.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,17 +7,51 @@ namespace ContosoUniversity.Pages.Students
 {
     public class IndexModel : PageModel
     {
-        private readonly ContosoUniversity.Data.ContosoUniversityContext _context;
+        private readonly ContosoUniversityContext _context;
 
-        public IndexModel(ContosoUniversity.Data.ContosoUniversityContext context)
+        public IndexModel(ContosoUniversityContext context)
         {
             _context = context;
         }
 
+        public string NameSort { get; set; }
+        public string DateSort { get; set; }
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
+
         public IList<Student> Student { get; set; } = default!;
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string sortOrder)
         {
+            /*
+             * The first line specifies that when sortOrder is null or empty, NameSort is set to name_desc. 
+             * If sortOrder is not null or empty, NameSort is set to an empty string.
+             */
+            NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+
+            // The method uses LINQ to Entities to specify the column to sort by.
+            IQueryable<Student> studentsIQ = from s in _context.Students
+                                             select s;
+
+            switch(sortOrder)
+            {
+                case "name_desc":
+                    studentsIQ = studentsIQ.OrderByDescending(s => s.Name);
+                    break;
+                case "Date":
+                    studentsIQ = studentsIQ.OrderBy(s => s.EnrollmentDate);
+                    break;
+                case "date_desc":
+                    studentsIQ = studentsIQ.OrderByDescending(s => s.EnrollmentDate);
+                    break;
+                default:
+                    studentsIQ = studentsIQ.OrderBy(s => s.Name);
+                    break;
+            }
+
+            Student = await studentsIQ.AsNoTracking().ToListAsync();
+
             if (_context.Students != null)
             {
                 Student = await _context.Students.ToListAsync();
