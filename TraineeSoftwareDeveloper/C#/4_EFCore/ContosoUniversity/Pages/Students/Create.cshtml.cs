@@ -22,18 +22,26 @@ namespace ContosoUniversity.Pages.Students
         public Student Student { get; set; }
 
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD - IMPORTANT //
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            var emptyStudent = new Student();
+
+            if(await TryUpdateModelAsync<Student>(
+                emptyStudent, 
+                "student",  // Prefix for form value.
+                s =>s.Name,
+                s=>s.EnrollmentDate ))
             {
-                return Page();
+                _context.Students.Add(emptyStudent);
+                await _context.SaveChangesAsync();
+
+                return RedirectToPage("./Index");
             }
 
-            _context.Students.Add(Student);
-            await _context.SaveChangesAsync();
+            return Page();
 
-            return RedirectToPage("./Index");
+            // TryUpdateModelAsync : https://learn.microsoft.com/en-us/aspnet/core/data/ef-rp/crud?view=aspnetcore-7.0#tryupdatemodelasync
         }
     }
 }
