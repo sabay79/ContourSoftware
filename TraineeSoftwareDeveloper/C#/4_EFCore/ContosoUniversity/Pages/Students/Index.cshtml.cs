@@ -19,7 +19,7 @@ namespace ContosoUniversity.Pages.Students
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
 
-        public IList<Student> Student { get; set; } = default!;
+        public IList<Student> Students { get; set; } = default!;
 
         public async Task OnGetAsync(string sortOrder)
         {
@@ -34,7 +34,7 @@ namespace ContosoUniversity.Pages.Students
             IQueryable<Student> studentsIQ = from s in _context.Students
                                              select s;
 
-            switch(sortOrder)
+            switch (sortOrder)
             {
                 case "name_desc":
                     studentsIQ = studentsIQ.OrderByDescending(s => s.Name);
@@ -50,12 +50,7 @@ namespace ContosoUniversity.Pages.Students
                     break;
             }
 
-            Student = await studentsIQ.AsNoTracking().ToListAsync();
-
-            if (_context.Students != null)
-            {
-                Student = await _context.Students.ToListAsync();
-            }
+            Students = await studentsIQ.AsNoTracking().ToListAsync();
         }
     }
 }
