@@ -35,7 +35,7 @@ namespace ContosoUniversity.Pages.Students
 
             if (searchString != null)
             {
-                pageIndex = -1;
+                pageIndex = 1;
             }
             else
             {

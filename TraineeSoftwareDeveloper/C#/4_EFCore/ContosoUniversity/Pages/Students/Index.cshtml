@@ -72,7 +72,7 @@
 </a>
 <a asp-page="./Index"
    asp-route-sortOrder="@Model.CurrentSort"
-   asp-route-pageIndex="@(Model.Students.PageIndex - 1)"
+   asp-route-pageIndex="@(Model.Students.PageIndex + 1)"
    asp-route-currentFilter="@Model.CurrentFilter"
    class="btn btn-primary @nextDisabled">
    Next
