@@ -41,7 +41,10 @@ namespace ContosoUniversity
             {
                 var services = scope.ServiceProvider;
                 var context = services.GetRequiredService<ContosoUniversityContext>();
-                context.Database.EnsureCreated();
+
+                // Remove EnsureCreated - Using migration for now onwards
+                // EnsureCreated doesn't create a migrations history table and so can't be used with migrations. It's designed for testing or rapid prototyping where the database is dropped and re-created frequently.
+                //context.Database.EnsureCreated();
                 DbInitializer.Initialize(context);
             }
 
