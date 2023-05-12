@@ -40,11 +40,11 @@ namespace ContosoUniversity.Pages.Instructors
             {
                 return NotFound();
             }
-            Instructor = await _context.Instructors
+            Instructor instructor = await _context.Instructors
                 .Include(i => i.Courses)
                 .SingleAsync(i => i.ID == id);
 
-            if (Instructor == null)
+            if (instructor == null)
             {
                 return RedirectToPage("./Index");
             }
@@ -54,8 +54,8 @@ namespace ContosoUniversity.Pages.Instructors
                                     .ToListAsync();
             departments.ForEach(d => d.InstructorID = null);
 
-            _context.Instructors.Remove(Instructor);
-
+            _context.Instructors.Remove(instructor);
+            await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }
     }
