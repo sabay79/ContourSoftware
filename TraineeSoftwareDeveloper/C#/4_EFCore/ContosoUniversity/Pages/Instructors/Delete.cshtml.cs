@@ -1,4 +1,5 @@
-﻿using ContosoUniversity.Models;
+﻿using ContosoUniversity.Data;
+using ContosoUniversity.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -7,9 +8,9 @@ namespace ContosoUniversity.Pages.Instructors
 {
     public class DeleteModel : PageModel
     {
-        private readonly ContosoUniversity.Data.ContosoUniversityContext _context;
+        private readonly ContosoUniversityContext _context;
 
-        public DeleteModel(ContosoUniversity.Data.ContosoUniversityContext context)
+        public DeleteModel(ContosoUniversityContext context)
         {
             _context = context;
         }
@@ -19,40 +20,47 @@ namespace ContosoUniversity.Pages.Instructors
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Instructors == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var instructor = await _context.Instructors.FirstOrDefaultAsync(m => m.ID == id);
+            Instructor = await _context.Instructors.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (instructor == null)
+            if (Instructor == null)
             {
                 return NotFound();
-            }
-            else
-            {
-                Instructor = instructor;
             }
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.Instructors == null)
+            if (id == null)
             {
                 return NotFound();
             }
-            var instructor = await _context.Instructors.FindAsync(id);
+            Instructor = await _context.Instructors
+                .Include(i => i.Courses)
+                .SingleAsync(i => i.ID == id);
 
-            if (instructor != null)
+            if (Instructor == null)
             {
-                Instructor = instructor;
-                _context.Instructors.Remove(Instructor);
-                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
+
+            var departments = await _context.Departments
+                                    .Where(d => d.InstructorID == id)
+                                    .ToListAsync();
+            departments.ForEach(d => d.InstructorID = null);
+
+            _context.Instructors.Remove(Instructor);
 
             return RedirectToPage("./Index");
         }
     }
 }
+/*The preceding code makes the following changes:
+    - Uses eager loading for the Courses navigation property. Courses must be included or they aren't deleted when the instructor is deleted. To avoid needing to read them, configure cascade delete in the database.
+    - If the instructor to be deleted is assigned as administrator of any departments, removes the instructor assignment from those departments.
+ */

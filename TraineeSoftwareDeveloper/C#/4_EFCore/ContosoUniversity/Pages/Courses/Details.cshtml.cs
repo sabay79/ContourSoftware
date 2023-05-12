@@ -1,4 +1,5 @@
-﻿using ContosoUniversity.Models;
+﻿using ContosoUniversity.Data;
+using ContosoUniversity.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -7,9 +8,9 @@ namespace ContosoUniversity.Pages.Courses
 {
     public class DetailsModel : PageModel
     {
-        private readonly ContosoUniversity.Data.ContosoUniversityContext _context;
+        private readonly ContosoUniversityContext _context;
 
-        public DetailsModel(ContosoUniversity.Data.ContosoUniversityContext context)
+        public DetailsModel(ContosoUniversityContext context)
         {
             _context = context;
         }
@@ -18,19 +19,19 @@ namespace ContosoUniversity.Pages.Courses
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Courses == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var course = await _context.Courses.FirstOrDefaultAsync(m => m.CourseID == id);
-            if (course == null)
+            Course = await _context.Courses
+                    .AsNoTracking()
+                    .Include(c => c.Department)
+                    .FirstOrDefaultAsync(m => m.CourseID == id);
+
+            if (Course == null)
             {
                 return NotFound();
-            }
-            else
-            {
-                Course = course;
             }
             return Page();
         }
