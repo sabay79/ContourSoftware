@@ -3,23 +3,38 @@ using ContosoUniversity.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
+using X.PagedList;
 
 namespace ContosoUniversity.Controllers
 {
     public class StudentController : Controller
     {
         private readonly UniversityDbContext _context;
+        private readonly IConfiguration Configuration;
 
-        public StudentController(UniversityDbContext context)
+        public StudentController(UniversityDbContext context, IConfiguration configuration)
         {
             _context = context;
+            Configuration = configuration;
         }
 
         // GET: Student
-        public async Task<IActionResult> Index(string sortOrder, string searchString)
+        public IActionResult Index(string sortOrder, string searchString, string currentFilter, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            // Pagination Funcationality
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewBag.CurrentFilter = searchString;
 
             var students = from s in _context.Student
                            select s;
@@ -46,7 +61,11 @@ namespace ContosoUniversity.Controllers
                     students = students.OrderBy(s => s.LastName);
                     break;
             }
-            return View(await students.AsNoTracking().ToListAsync());
+            int pageSize = Configuration.GetValue("PageSize", 4);
+            int pageNumber = (page ?? 1);
+
+            return View(students.ToPagedList(pageNumber, pageSize));
+            //return View(await students.AsNoTracking().ToListAsync());
 
             //return _context.Student != null ?
             //            View(await _context.Student.ToListAsync()) :
