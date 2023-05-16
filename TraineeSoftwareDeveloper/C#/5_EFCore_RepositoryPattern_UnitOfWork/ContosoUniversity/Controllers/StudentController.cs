@@ -16,13 +16,20 @@ namespace ContosoUniversity.Controllers
         }
 
         // GET: Student
-        public async Task<IActionResult> Index(string sortOrder)
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
 
             var students = from s in _context.Student
                            select s;
+
+            // Filtering functionality
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s => s.LastName.Contains(searchString)
+                                            || s.FirstMidName.Contains(searchString));
+            }
 
             switch (sortOrder)
             {
