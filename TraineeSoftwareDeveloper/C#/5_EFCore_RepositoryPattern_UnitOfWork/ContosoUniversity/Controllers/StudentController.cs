@@ -231,5 +231,14 @@ namespace ContosoUniversity.Controllers
         {
             return (_context.Student?.Any(e => e.ID == id)).GetValueOrDefault();
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            if(disposing)
+            {
+                _context.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }
