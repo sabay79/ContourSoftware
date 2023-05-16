@@ -1,3 +1,5 @@
+using ContosoUniversity.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -11,6 +13,14 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
+}
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var dbContext = services.GetRequiredService<UniversityDbContext>();
+    dbContext.Database.EnsureCreated();
+    UniversityDbInitializer.Initialize(dbContext);
 }
 
 app.UseHttpsRedirection();
