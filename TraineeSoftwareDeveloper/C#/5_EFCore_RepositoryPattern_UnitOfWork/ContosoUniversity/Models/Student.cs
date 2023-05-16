@@ -7,6 +7,9 @@
         public string FirstMidName { get; set; }
         public DateTime EnrollmentDate { get; set; }
 
-        public virtual ICollection<Enrollment> Enrollments { get; set; }
+        // Related to over-posting attacks 
+        //public string Secret { get; set; }
+
+        public virtual ICollection<Enrollment>? Enrollments { get; set; }
     }
 }

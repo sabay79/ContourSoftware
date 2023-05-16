@@ -2,6 +2,7 @@
 using ContosoUniversity.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace ContosoUniversity.Controllers
 {
@@ -31,7 +32,11 @@ namespace ContosoUniversity.Controllers
             }
 
             var student = await _context.Student
+                .Include(s => s.Enrollments)
+                .ThenInclude(e => e.Course)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
+
             if (student == null)
             {
                 return NotFound();
@@ -53,11 +58,19 @@ namespace ContosoUniversity.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,LastName,FirstMidName,EnrollmentDate")] Student student)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(student);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _context.Add(student);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            catch (DataException dex)
+            {
+                Console.WriteLine(dex.Message);
+                //ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
             return View(student);
         }
@@ -114,11 +127,16 @@ namespace ContosoUniversity.Controllers
         }
 
         // GET: Student/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, bool? saveChangesError = false)
         {
             if (id == null || _context.Student == null)
             {
                 return NotFound();
+            }
+
+            if(saveChangesError.GetValueOrDefault())
+            {
+                ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your system administrator.";
             }
 
             var student = await _context.Student
@@ -140,13 +158,23 @@ namespace ContosoUniversity.Controllers
             {
                 return Problem("Entity set 'UniversityDbContext.Student'  is null.");
             }
-            var student = await _context.Student.FindAsync(id);
-            if (student != null)
-            {
-                _context.Student.Remove(student);
-            }
 
-            await _context.SaveChangesAsync();
+            try
+            {
+                var student = await _context.Student.FindAsync(id);
+
+                if (student != null)
+                {
+                    _context.Student.Remove(student);
+                }
+
+                await _context.SaveChangesAsync();
+            }
+            catch (DataException dex) 
+            {
+                Console.WriteLine(dex.Message);
+                return RedirectToAction("Delete", new { id, saveChangesError = true });
+            }
             return RedirectToAction(nameof(Index));
         }
 
