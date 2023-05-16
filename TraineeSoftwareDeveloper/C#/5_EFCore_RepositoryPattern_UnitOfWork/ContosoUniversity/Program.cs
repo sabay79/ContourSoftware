@@ -28,7 +28,7 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     var dbContext = services.GetRequiredService<UniversityDbContext>();
-    dbContext.Database.EnsureCreated();
+    //dbContext.Database.EnsureCreated();
     UniversityDbInitializer.Initialize(dbContext);
 }
 
