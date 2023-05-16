@@ -16,11 +16,34 @@ namespace ContosoUniversity.Controllers
         }
 
         // GET: Student
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder)
         {
-            return _context.Student != null ?
-                        View(await _context.Student.ToListAsync()) :
-                        Problem("Entity set 'UniversityDbContext.Student'  is null.");
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            var students = from s in _context.Student
+                           select s;
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    students = students.OrderByDescending(s => s.LastName);
+                    break;
+                case "Date":
+                    students = students.OrderBy(s => s.EnrollmentDate);
+                    break;
+                case "date_desc":
+                    students = students.OrderByDescending(s => s.EnrollmentDate);
+                    break;
+                default:
+                    students = students.OrderBy(s => s.LastName);
+                    break;
+            }
+            return View(await students.AsNoTracking().ToListAsync());
+
+            //return _context.Student != null ?
+            //            View(await _context.Student.ToListAsync()) :
+            //            Problem("Entity set 'UniversityDbContext.Student'  is null.");
         }
 
         // GET: Student/Details/5
@@ -134,7 +157,7 @@ namespace ContosoUniversity.Controllers
                 return NotFound();
             }
 
-            if(saveChangesError.GetValueOrDefault())
+            if (saveChangesError.GetValueOrDefault())
             {
                 ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your system administrator.";
             }
@@ -170,7 +193,7 @@ namespace ContosoUniversity.Controllers
 
                 await _context.SaveChangesAsync();
             }
-            catch (DataException dex) 
+            catch (DataException dex)
             {
                 Console.WriteLine(dex.Message);
                 return RedirectToAction("Delete", new { id, saveChangesError = true });
