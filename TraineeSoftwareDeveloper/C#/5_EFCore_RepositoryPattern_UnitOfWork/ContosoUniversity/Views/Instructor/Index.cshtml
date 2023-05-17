@@ -16,6 +16,7 @@
             <th>First Name</th>
             <th>Hire Date</th>
             <th>Office</th>
+            <th>Courses</th>
             <th></th>
         </tr>
     </thead>
@@ -44,7 +45,15 @@
                     }
                 </td>
                 <td>
-                    <a asp-action="Select" asp-route-id="@item.ID">Edit</a> |
+                    @{
+                        foreach (var course in item.Courses)
+                        {
+                            @course.CourseID @:  @course.Title <br />
+                        }
+                    }           
+                </td>
+                <td>
+                    <a asp-action="Select" asp-route-id="@item.ID">Select</a> |
                     <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>

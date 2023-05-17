@@ -3,6 +3,7 @@ using ContosoUniversity.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace ContosoUniversity.Controllers
 {
@@ -44,7 +45,7 @@ namespace ContosoUniversity.Controllers
         // GET: Course/Create
         public IActionResult Create()
         {
-            ViewData["DepartmentID"] = new SelectList(_context.Departments, "DepartmentID", "DepartmentID");
+            PopulateDepartmentsDropDownList();
             return View();
         }
 
@@ -53,15 +54,24 @@ namespace ContosoUniversity.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CourseID,Title,Credits,DepartmentID")] Course course)
+        public async Task<IActionResult> Create([Bind(include: "CourseID,Title,Credits,DepartmentID")] Course course)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(course);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _context.Add(course);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
             }
-            ViewData["DepartmentID"] = new SelectList(_context.Departments, "DepartmentID", "DepartmentID", course.DepartmentID);
+            catch (RetryLimitExceededException dex)
+            {
+                Console.WriteLine(dex.Message);
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+            }
+
+            PopulateDepartmentsDropDownList(course.DepartmentID);
             return View(course);
         }
 
@@ -78,7 +88,7 @@ namespace ContosoUniversity.Controllers
             {
                 return NotFound();
             }
-            ViewData["DepartmentID"] = new SelectList(_context.Departments, "DepartmentID", "DepartmentID", course.DepartmentID);
+            PopulateDepartmentsDropDownList(course.DepartmentID);
             return View(course);
         }
 
@@ -87,13 +97,8 @@ namespace ContosoUniversity.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CourseID,Title,Credits,DepartmentID")] Course course)
+        public async Task<IActionResult> Edit(int id, [Bind(include: "CourseID,Title,Credits,DepartmentID")] Course course)
         {
-            if (id != course.CourseID)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
                 try
@@ -114,7 +119,7 @@ namespace ContosoUniversity.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DepartmentID"] = new SelectList(_context.Departments, "DepartmentID", "DepartmentID", course.DepartmentID);
+            PopulateDepartmentsDropDownList(course.DepartmentID);
             return View(course);
         }
 
@@ -159,6 +164,14 @@ namespace ContosoUniversity.Controllers
         private bool CourseExists(int id)
         {
             return (_context.Courses?.Any(e => e.CourseID == id)).GetValueOrDefault();
+        }
+
+        private void PopulateDepartmentsDropDownList(object selectedDepartment = null)
+        {
+            var departmentsQuery = from d in _context.Departments
+                                   orderby d.Name
+                                   select d;
+            ViewBag.DepartmentID = new SelectList(departmentsQuery, "DepartmentID", "Name", selectedDepartment);
         }
     }
 }
