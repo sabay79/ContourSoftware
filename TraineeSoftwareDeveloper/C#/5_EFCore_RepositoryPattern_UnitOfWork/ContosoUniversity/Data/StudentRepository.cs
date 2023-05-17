@@ -1,4 +1,6 @@
-﻿using ContosoUniversity.Models;
+﻿// Creating the Student Repository Class
+
+using ContosoUniversity.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace ContosoUniversity.Data
@@ -40,9 +42,9 @@ namespace ContosoUniversity.Data
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)
         {
-            if(!this.disposed)
+            if (!this.disposed)
             {
-                if(disposing)
+                if (disposing)
                 {
                     _context.Dispose();
                 }

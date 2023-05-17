@@ -1,4 +1,6 @@
-﻿using ContosoUniversity.Models;
+﻿// Creating the Student Repository Interface
+
+using ContosoUniversity.Models;
 
 namespace ContosoUniversity.Data
 {
