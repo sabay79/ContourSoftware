@@ -1,9 +1,8 @@
 ﻿using ContosoUniversity.Data;
 using ContosoUniversity.Models;
+using ContosoUniversity.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using ContosoUniversity.Data;
-using ContosoUniversity.ViewModels;
 
 namespace ContosoUniversity.Controllers
 {
@@ -12,7 +11,7 @@ namespace ContosoUniversity.Controllers
         private UniversityDbContext _dbContext;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(UniversityDbContext dbContext,ILogger<HomeController> logger)
+        public HomeController(UniversityDbContext dbContext, ILogger<HomeController> logger)
         {
             _dbContext = dbContext;
             _logger = logger;
@@ -25,7 +24,7 @@ namespace ContosoUniversity.Controllers
 
         public ActionResult About()
         {
-            IQueryable<EnrollmentDateGroup> data = from student in _dbContext.Student
+            IQueryable<EnrollmentDateGroup> data = from student in _dbContext.Students
                                                    group student by student.EnrollmentDate into dateGroup
                                                    select new EnrollmentDateGroup()
                                                    {

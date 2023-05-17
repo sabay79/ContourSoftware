@@ -6,7 +6,7 @@ namespace ContosoUniversity.Data
     {
         public static void Initialize(UniversityDbContext dbContext)
         {
-            if (dbContext.Student.Any())
+            if (dbContext.Students.Any())
             {
                 return;
                 // DB has been seeded.
@@ -24,7 +24,7 @@ namespace ContosoUniversity.Data
             new Student{FirstMidName = "Nino", LastName = "Olivetto", EnrollmentDate = DateTime.Parse("2005-09-01")}
             };
             //students.AddRange(students);
-            students.ForEach(s => dbContext.Student.Add(s));
+            students.ForEach(s => dbContext.Students.Add(s));
             dbContext.SaveChanges();
 
             var courses = new List<Course>
@@ -37,7 +37,7 @@ namespace ContosoUniversity.Data
             new Course{CourseID=2021, Title="Composition", Credits=3,},
             new Course{CourseID=2042, Title="Literature", Credits=4,}
             };
-            courses.ForEach(c => dbContext.Course.Add(c));
+            courses.ForEach(c => dbContext.Courses.Add(c));
             dbContext.SaveChanges();
 
             var enrollments = new List<Enrollment>
@@ -55,7 +55,7 @@ namespace ContosoUniversity.Data
             new Enrollment{StudentID=6, CourseID=1045},
             new Enrollment{StudentID=7, CourseID=3141, Grade=Grade.A},
             };
-            enrollments.ForEach(e => dbContext.Enrollment.Add(e));
+            enrollments.ForEach(e => dbContext.Enrollments.Add(e));
             dbContext.SaveChanges();
         }
         // The code checks if there are any students in the database. If there are no students, it adds test data to the database.

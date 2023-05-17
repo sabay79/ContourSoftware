@@ -9,9 +9,9 @@ namespace ContosoUniversity.Data
         public UniversityDbContext(DbContextOptions<UniversityDbContext> options) : base(options)
         { }
 
-        public DbSet<Student> Student { get; set; }
-        public DbSet<Enrollment> Enrollment { get; set; }
-        public DbSet<Course> Course { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Enrollment> Enrollments { get; set; }
+        public DbSet<Course> Courses { get; set; }
         public DbSet<Instructor> Instructors { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<OfficeAssignment> OfficeAssignments { get; set; }
