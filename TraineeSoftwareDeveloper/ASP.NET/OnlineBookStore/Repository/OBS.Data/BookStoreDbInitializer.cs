@@ -9,6 +9,7 @@ namespace OBS.Data
             // Look for any Book
             if (dbContext.Books.Any())
             {
+                Console.WriteLine("DB has been seeded.");
                 return;
                 //DB has been seeded
             }

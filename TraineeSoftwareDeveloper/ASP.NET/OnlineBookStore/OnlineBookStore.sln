@@ -16,8 +16,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBS.Data", "Repository\OBS.Data\OBS.Data.csproj", "{62C9E98F-7D70-4374-8B07-72061D2472A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFTest", "EFTest\EFTest.csproj", "{0CAA77CB-411D-40E5-BBA6-C3044FA0F91B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,10 +34,6 @@ Global
 		{62C9E98F-7D70-4374-8B07-72061D2472A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62C9E98F-7D70-4374-8B07-72061D2472A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62C9E98F-7D70-4374-8B07-72061D2472A3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0CAA77CB-411D-40E5-BBA6-C3044FA0F91B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0CAA77CB-411D-40E5-BBA6-C3044FA0F91B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0CAA77CB-411D-40E5-BBA6-C3044FA0F91B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0CAA77CB-411D-40E5-BBA6-C3044FA0F91B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
