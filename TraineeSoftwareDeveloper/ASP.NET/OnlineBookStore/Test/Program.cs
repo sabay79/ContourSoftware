@@ -1,4 +1,7 @@
 ﻿using OBS.Data;
+using OBS.Data.Models;
+using OBS.Data.Services;
+
 try
 {
     using var _dbContext = new BookStoreDbContext();
@@ -9,3 +12,54 @@ catch (Exception ex)
 {
     Console.WriteLine(ex.Message.ToString());
 }
+// Test Customer Repository // 
+
+var customerRepository = new CustomerRepository();
+
+var customers = customerRepository.GetAll();
+foreach (var customer in customers)
+{
+    Console.WriteLine($"Customer: {customer.Name},\t Gender:{customer.Gender}");
+}
+try
+{
+    var customerByID = customerRepository.GetByID(1);
+    Console.WriteLine($"Customer: {customerByID.Name},\t Gender:{customerByID.Gender}");
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message.ToString());
+}
+
+try
+{
+    var customerToAdd = new Customer { Name = "Ayesha", Gender = Gender.Female, Email = "ayesha@gmail.com", Address = "Pakistan" };
+    customerRepository.Add(customerToAdd);
+    customerRepository.Save();
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message.ToString());
+}
+
+try
+{
+    customerRepository.Delete(3);
+    customerRepository.Save();
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message.ToString());
+}
+
+try
+{
+    var customerToUpdate = customerRepository.GetAll().First();
+    customerToUpdate.Email = "sabay@gmail.com";
+    customerRepository.Save();
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message.ToString());
+}
+

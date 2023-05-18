@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Repository\OBS.Data.Services\OBS.Data.Services.csproj" />
     <ProjectReference Include="..\Repository\OBS.Data\OBS.Data.csproj" />
   </ItemGroup>
 
