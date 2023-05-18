@@ -11,6 +11,7 @@
         public Book Book { get; set; }
 
         public int Quantity { get; set; }
+        public int Price() => Quantity * Book.Price;
 
     }
 }
