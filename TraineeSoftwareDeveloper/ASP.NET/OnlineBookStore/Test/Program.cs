@@ -36,7 +36,7 @@ try
     var customerToAdd = new Customer { Name = "Ayesha", Gender = Gender.Female, Email = "ayesha@gmail.com", Address = "Pakistan" };
     customerRepository.Add(customerToAdd);
     customerRepository.Save();
-    Console.WriteLine(customerRepository.GetByID(customerToAdd.ID).ToString());
+    Console.WriteLine(customerToAdd.ID);
 }
 catch (Exception ex)
 {
