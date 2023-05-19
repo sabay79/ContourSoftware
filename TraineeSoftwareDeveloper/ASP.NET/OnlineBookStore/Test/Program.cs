@@ -36,6 +36,7 @@ try
     var customerToAdd = new Customer { Name = "Ayesha", Gender = Gender.Female, Email = "ayesha@gmail.com", Address = "Pakistan" };
     customerRepository.Add(customerToAdd);
     customerRepository.Save();
+    Console.WriteLine(customerRepository.GetByID(customerToAdd.ID).ToString());
 }
 catch (Exception ex)
 {
@@ -44,7 +45,7 @@ catch (Exception ex)
 
 try
 {
-    customerRepository.Delete(3);
+    customerRepository.Delete(9);
     customerRepository.Save();
 }
 catch (Exception ex)

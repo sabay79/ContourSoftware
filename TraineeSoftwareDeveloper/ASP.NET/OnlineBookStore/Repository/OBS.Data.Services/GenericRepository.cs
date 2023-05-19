@@ -22,10 +22,7 @@ namespace OBS.Data.Services
             var entity = GetByID(id);
             _dbSet.Remove(entity);
         }
-        public void Save()
-        {
-            _dbContext.SaveChanges();
-        }
+        public void Save() => _dbContext.SaveChanges();
 
     }
 }
