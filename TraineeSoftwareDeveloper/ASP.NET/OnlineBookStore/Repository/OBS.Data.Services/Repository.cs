@@ -7,9 +7,9 @@ namespace OBS.Data.Services
     {
         private readonly BookStoreDbContext _dbContext;
         private readonly DbSet<TEntity> _dbSet;
-        public Repository()
+        public Repository(BookStoreDbContext dbContext)
         {
-            _dbContext = new BookStoreDbContext();
+            _dbContext = dbContext;
             _dbSet = _dbContext.Set<TEntity>();
         }
 
