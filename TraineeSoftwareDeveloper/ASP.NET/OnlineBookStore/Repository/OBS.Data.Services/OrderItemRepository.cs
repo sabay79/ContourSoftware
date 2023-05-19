@@ -3,6 +3,6 @@ using OBS.Data.Models;
 
 namespace OBS.Data.Services
 {
-    public class OrderItemRepository : GenericRepository<OrderItem>, IOrderItemRepository
+    public class OrderItemRepository : Repository<OrderItem>, IOrderItemRepository
     { }
 }

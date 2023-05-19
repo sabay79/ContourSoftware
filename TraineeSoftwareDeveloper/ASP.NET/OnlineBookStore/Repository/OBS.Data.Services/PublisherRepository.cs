@@ -3,6 +3,6 @@ using OBS.Data.Models;
 
 namespace OBS.Data.Services
 {
-    public class PublisherRepository : GenericRepository<Publisher>, IPublisherRepository
+    public class PublisherRepository : Repository<Publisher>, IPublisherRepository
     { }
 }

@@ -2,6 +2,6 @@
 
 namespace OBS.Data.Interfaces
 {
-    public interface IAuthorRepository : IGenericRepository<Author>
+    public interface IAuthorRepository : IRepository<Author>
     { }
 }

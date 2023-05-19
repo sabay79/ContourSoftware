@@ -3,11 +3,11 @@ using OBS.Data.Interfaces;
 
 namespace OBS.Data.Services
 {
-    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         private readonly BookStoreDbContext _dbContext;
         private readonly DbSet<TEntity> _dbSet;
-        public GenericRepository()
+        public Repository()
         {
             _dbContext = new BookStoreDbContext();
             _dbSet = _dbContext.Set<TEntity>();

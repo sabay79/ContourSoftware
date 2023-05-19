@@ -2,6 +2,6 @@
 
 namespace OBS.Data.Interfaces
 {
-    public interface IBookRepository : IGenericRepository<Book>
+    public interface IBookRepository : IRepository<Book>
     { }
 }

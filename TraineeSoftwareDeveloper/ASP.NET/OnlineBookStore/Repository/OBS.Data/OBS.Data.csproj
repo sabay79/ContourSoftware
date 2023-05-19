@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OBS.Data.Interfaces\OBS.Data.Interfaces.csproj" />
     <ProjectReference Include="..\OBS.Data.Models\OBS.Data.Models.csproj" />
   </ItemGroup>
 

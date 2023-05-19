@@ -3,6 +3,6 @@ using OBS.Data.Models;
 
 namespace OBS.Data.Services
 {
-    public class AuthorRepository : GenericRepository<Author>, IAuthorRepository
+    public class AuthorRepository : Repository<Author>, IAuthorRepository
     { }
 }

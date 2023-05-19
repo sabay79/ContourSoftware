@@ -1,6 +1,6 @@
 ﻿namespace OBS.Data.Interfaces
 {
-    public interface IGenericRepository<TEntity>
+    public interface IRepository<TEntity>
     {
         IEnumerable<TEntity> GetAll();
         TEntity GetByID(int id);

@@ -2,6 +2,6 @@
 
 namespace OBS.Data.Interfaces
 {
-    public interface IOrderRepository : IGenericRepository<Order>
+    public interface IOrderRepository : IRepository<Order>
     { }
 }
