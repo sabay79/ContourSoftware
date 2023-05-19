@@ -12,6 +12,11 @@ catch (Exception ex)
 {
     Console.WriteLine(ex.Message.ToString());
 }
+
+// REPOSITORY PATTERN //
+// Repository Pattern promotes a clean separation of concerns
+// and improves the maintainability, testability, and flexibility of applications by abstracting away the data access implementation details.
+
 // Test Customer Repository // 
 
 var customerRepository = new CustomerRepository();
