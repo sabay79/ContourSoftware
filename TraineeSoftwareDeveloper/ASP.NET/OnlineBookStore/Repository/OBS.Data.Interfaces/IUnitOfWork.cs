@@ -1,15 +1,16 @@
 ﻿namespace OBS.Data.Interfaces
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork<TEntity> : IDisposable where TEntity : class
     {
-        IAuthorRepository AuthorRepository { get; }
-        IPublisherRepository PublisherRepository { get; }
-        IBookRepository BookRepository { get; }
-        ICustomerRepository CustomerRepository { get; }
-        IOrderRepository OrderRepository { get; }
-        IOrderItemRepository OrderItemRepository { get; }
+        IRepository<TEntity> Repository { get; }
+        //IAuthorRepository Authors { get; }
+        //IPublisherRepository Publishers { get; }
+        //IBookRepository Books { get; }
+        //ICustomerRepository Customers { get; }
+        //IOrderRepository Orders { get; }
+        //IOrderItemRepository OrderItems { get; }
 
-        int Save();
+        void Save();
 
     }
 }

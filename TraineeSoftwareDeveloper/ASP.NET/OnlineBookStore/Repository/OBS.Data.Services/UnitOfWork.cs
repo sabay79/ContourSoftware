@@ -2,37 +2,34 @@
 
 namespace OBS.Data.Services
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork<TEntity> : IUnitOfWork<TEntity>, IDisposable where TEntity : class
     {
         private readonly BookStoreDbContext _dbContext;
+        private readonly IRepository<TEntity> _repository;
+        //public IAuthorRepository Authors { get; }
+        //public IPublisherRepository Publishers { get; }
+        //public IBookRepository Books { get; }
+        //public ICustomerRepository Customers { get; }
+        //public IOrderRepository Orders { get; }
+        //public IOrderItemRepository OrderItems { get; }
 
-        public IAuthorRepository Authors { get; }
-        public IPublisherRepository Publishers { get; }
-        public IBookRepository Books { get; }
-        public ICustomerRepository Customers { get; }
-        public IOrderRepository Orders { get; }
-        public IOrderItemRepository OrderItems { get; }
-
-        public UnitOfWork(BookStoreDbContext dbContext,
-                          IAuthorRepository authorRepository,
-                          IPublisherRepository publisherRepository,
-                          IBookRepository bookRepository,
-                          ICustomerRepository customerRepository,
-                          IOrderRepository orderRepository,
-                          IOrderItemRepository orderItemRepository)
+        public UnitOfWork(BookStoreDbContext dbContext, IRepository<TEntity> repository)
         {
             _dbContext = dbContext;
-            Authors = authorRepository;
-            Publishers = publisherRepository;
-            Books = bookRepository;
-            Customers = customerRepository;
-            Orders = orderRepository;
-            OrderItems = orderItemRepository;
+            _repository = repository;
+            //Authors = authorRepository;
+            //Publishers = publisherRepository;
+            //Books = bookRepository;
+            //Customers = customerRepository;
+            //Orders = orderRepository;
+            //OrderItems = orderItemRepository;
         }
 
-        public int Save()
+        public IRepository<TEntity> Repository => _repository;
+
+        public void Save()
         {
-            return _dbContext.SaveChanges();
+            _dbContext.SaveChanges();
         }
 
         public void Dispose()

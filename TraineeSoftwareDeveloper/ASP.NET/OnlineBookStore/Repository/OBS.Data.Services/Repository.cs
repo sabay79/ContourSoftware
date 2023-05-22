@@ -17,11 +17,7 @@ namespace OBS.Data.Services
         public TEntity GetByID(int id) => _dbSet.Find(id);
         public void Add(TEntity entity) => _dbSet.Add(entity);
         public void Update(TEntity entity) => _dbSet.Update(entity);
-        public void Delete(int id)
-        {
-            var entity = GetByID(id);
-            _dbSet.Remove(entity);
-        }
+        public void Delete(TEntity entity) => _dbSet.Remove(entity);
         public void Save() => _dbContext.SaveChanges();
 
     }

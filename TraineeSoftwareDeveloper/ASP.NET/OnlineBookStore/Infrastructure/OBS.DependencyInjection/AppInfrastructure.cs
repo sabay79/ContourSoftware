@@ -11,7 +11,7 @@ namespace OBS.DependencyInjection
     {
         public static void AppDISetup(this IServiceCollection services, IConfiguration configuration)
         {
-            // Configure EntityFramework
+            //// Configure EntityFramework
             services.AddDbContext<BookStoreDbContext>(options => options
                                                     .UseSqlServer(configuration.GetConnectionString("DbConnection")));
 
@@ -20,7 +20,7 @@ namespace OBS.DependencyInjection
 
             // Unit Of Work Configuration
             //services.AddTransient<IUnitOfWork, UnitOfWork>();
-            services.AddTransient(typeof(IUnitOfWork), typeof(UnitOfWork));
+            services.AddTransient(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
 
         }
     }
