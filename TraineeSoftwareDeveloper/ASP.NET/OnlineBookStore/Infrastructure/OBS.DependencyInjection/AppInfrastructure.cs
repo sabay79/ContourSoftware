@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OBS.Business.Interfaces;
+using OBS.Business.Services;
 using OBS.Data;
 using OBS.Data.Interfaces;
 using OBS.Data.Services;
@@ -22,6 +24,11 @@ namespace OBS.DependencyInjection
             //services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
 
+            // All of the Custom Configuration - Dependency Injection
+            services.AddScoped<IAuthorService, AuthorService>();
+
+            // Automapper Configuration
+            services.AddAutoMapper(typeof(BusinessEntityMapping));
         }
     }
 }

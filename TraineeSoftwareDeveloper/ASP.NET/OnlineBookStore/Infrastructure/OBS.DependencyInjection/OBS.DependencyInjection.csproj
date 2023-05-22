@@ -7,11 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Business\OBS.Business.Interfaces\OBS.Business.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Business\OBS.Business.Services\OBS.Business.Services.csproj" />
     <ProjectReference Include="..\..\Repository\OBS.Data.Interfaces\OBS.Data.Interfaces.csproj" />
     <ProjectReference Include="..\..\Repository\OBS.Data.Services\OBS.Data.Services.csproj" />
   </ItemGroup>

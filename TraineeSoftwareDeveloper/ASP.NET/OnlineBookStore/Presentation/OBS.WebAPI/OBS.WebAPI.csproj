@@ -18,6 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Business\OBS.Business.Interfaces\OBS.Business.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Business\OBS.Business.Models\OBS.Business.Models.csproj" />
     <ProjectReference Include="..\..\Infrastructure\OBS.DependencyInjection\OBS.DependencyInjection.csproj" />
     <ProjectReference Include="..\..\Repository\OBS.Data.Interfaces\OBS.Data.Interfaces.csproj" />
   </ItemGroup>

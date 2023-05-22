@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OBS.Data.Interfaces;
-using OBS.Data.Models;
+using OBS.Business.Interfaces;
+using OBS.Business.Models;
 
 namespace OBS.WebAPI.Controllers
 {
@@ -8,71 +8,48 @@ namespace OBS.WebAPI.Controllers
     [ApiController]
     public class AuthorController : ControllerBase
     {
-        private readonly IUnitOfWork<Author> _unitOfWork;
-        public AuthorController(IUnitOfWork<Author> unitOfWork)
+        private readonly IAuthorService _authorService;
+        public AuthorController(IAuthorService authorService)
         {
-            _unitOfWork = unitOfWork;
+            _authorService = authorService;
         }
 
         // GET : API/Authors
         [HttpGet]
-        public ActionResult<IEnumerable<Author>> GetAll()
+        public ActionResult<IEnumerable<AuthorModel>> GetAll()
         {
-            var authors = _unitOfWork.Repository.GetAll();
+            var authors = _authorService.GetAll();
             return Ok(authors);
         }
 
         // GET : API/Author{id}
         [HttpGet("{id}")]
-        public ActionResult<Author> Get(int id)
+        public ActionResult<AuthorModel> Get(int id)
         {
-            var author = _unitOfWork.Repository.GetByID(id);
+            var author = _authorService.GetByID(id);
             return Ok(author);
         }
 
         // POST : API/Author
         [HttpPost]
-        public ActionResult<Author> Add([FromBody] Author author)
+        public ActionResult<AuthorModel> Add([FromBody] AuthorModel author)
         {
-            _unitOfWork.Repository.Add(author);
-            _unitOfWork.Save();
-
+            _authorService.Add(author);
             return CreatedAtAction(nameof(Get), new { id = author.ID }, author);
         }
 
-        [HttpPut("{id}")]
-        public ActionResult<Author> Update(int id, [FromBody] Author author)
+        [HttpPut]
+        public ActionResult<AuthorModel> Update([FromBody] AuthorModel author)
         {
-            var authorToUpdate = _unitOfWork.Repository.GetByID(id);
-            if (authorToUpdate == null)
-            {
-                return NotFound();
-            }
-
-            authorToUpdate.Name = author.Name;
-            authorToUpdate.Gender = author.Gender;
-            authorToUpdate.Email = author.Email;
-            authorToUpdate.Books = author.Books;
-
-            _unitOfWork.Repository.Update(author);
-            _unitOfWork.Save();
-
-            return Ok(authorToUpdate);
+            _authorService.Update(author);
+            return Ok(author);
         }
 
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            var authorToDelete = _unitOfWork.Repository.GetByID(id);
-            if (authorToDelete == null)
-            {
-                return NotFound(id);
-            }
-
-            _unitOfWork.Repository.Delete(authorToDelete);
-            _unitOfWork.Save();
-
-            return Ok(authorToDelete);
+            _authorService.Delete(id);
+            return Ok(_authorService.GetByID(id));
         }
     }
 }
