@@ -11,13 +11,16 @@ namespace OBS.Data
         { }
         // ApplicationDbContext can then be used in ASP.NET Core controllers or other services through constructor injection.
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            //base.OnConfiguring(optionsBuilder);
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    //base.OnConfiguring(optionsBuilder);
 
-            optionsBuilder.UseSqlServer
-                (@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=OnlineBookStoreDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
-        }
+        //    optionsBuilder.UseSqlServer
+        //        (@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=OnlineBookStoreDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+        //}
+        /// <summary>
+        /// Configure DB in AppInfrastructure.cs
+        /// </summary>
 
         // All Entities from Database as DbSets //
         public DbSet<Book> Books { get; set; }

@@ -1,3 +1,5 @@
+using OBS.DependencyInjection;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +8,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// All Application DI Configuration
+builder.Services.AppDISetup(builder.Configuration);
 
 var app = builder.Build();
 

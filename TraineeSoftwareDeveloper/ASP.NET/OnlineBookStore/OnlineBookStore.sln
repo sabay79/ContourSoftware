@@ -12,13 +12,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{664A2881-DF59-4E63-BFF8-94F686EE865D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{664A2881-DF59-4E63-BFF8-94F686EE865D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBS.Data", "Repository\OBS.Data\OBS.Data.csproj", "{62C9E98F-7D70-4374-8B07-72061D2472A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OBS.Data", "Repository\OBS.Data\OBS.Data.csproj", "{62C9E98F-7D70-4374-8B07-72061D2472A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBS.Data.Interfaces", "Repository\OBS.Data.Interfaces\OBS.Data.Interfaces.csproj", "{374E794C-A05B-4295-90C6-E78301EB216D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OBS.Data.Interfaces", "Repository\OBS.Data.Interfaces\OBS.Data.Interfaces.csproj", "{374E794C-A05B-4295-90C6-E78301EB216D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBS.Data.Services", "Repository\OBS.Data.Services\OBS.Data.Services.csproj", "{A83EF0CC-3184-4AB8-8AA9-6A53DE6B285E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OBS.Data.Services", "Repository\OBS.Data.Services\OBS.Data.Services.csproj", "{A83EF0CC-3184-4AB8-8AA9-6A53DE6B285E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{4F23E067-3C83-4100-8561-D3222365047E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBS.WebAPI", "Presentation\OBS.WebAPI\OBS.WebAPI.csproj", "{03AC6346-2364-47A4-8A1E-14A0489303C0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{0B799FB4-82C7-4BC0-89AC-A5312CB1B482}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBS.DependencyInjection", "Infrastructure\OBS.DependencyInjection\OBS.DependencyInjection.csproj", "{ADB23461-4C46-43CD-8206-12745A142206}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,6 +54,14 @@ Global
 		{A83EF0CC-3184-4AB8-8AA9-6A53DE6B285E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A83EF0CC-3184-4AB8-8AA9-6A53DE6B285E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A83EF0CC-3184-4AB8-8AA9-6A53DE6B285E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03AC6346-2364-47A4-8A1E-14A0489303C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03AC6346-2364-47A4-8A1E-14A0489303C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03AC6346-2364-47A4-8A1E-14A0489303C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03AC6346-2364-47A4-8A1E-14A0489303C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADB23461-4C46-43CD-8206-12745A142206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADB23461-4C46-43CD-8206-12745A142206}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADB23461-4C46-43CD-8206-12745A142206}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADB23461-4C46-43CD-8206-12745A142206}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +71,8 @@ Global
 		{62C9E98F-7D70-4374-8B07-72061D2472A3} = {7D83B093-7695-4E7D-BDB0-DBA26C61311E}
 		{374E794C-A05B-4295-90C6-E78301EB216D} = {7D83B093-7695-4E7D-BDB0-DBA26C61311E}
 		{A83EF0CC-3184-4AB8-8AA9-6A53DE6B285E} = {7D83B093-7695-4E7D-BDB0-DBA26C61311E}
+		{03AC6346-2364-47A4-8A1E-14A0489303C0} = {4F23E067-3C83-4100-8561-D3222365047E}
+		{ADB23461-4C46-43CD-8206-12745A142206} = {0B799FB4-82C7-4BC0-89AC-A5312CB1B482}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EA47DA99-F10D-4AE0-85B1-0C515A6066F4}
