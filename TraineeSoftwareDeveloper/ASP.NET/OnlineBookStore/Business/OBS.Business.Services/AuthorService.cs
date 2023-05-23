@@ -9,8 +9,6 @@ namespace OBS.Business.Services
     public class AuthorService : Service<AuthorModel, Author>, IAuthorService
     {
         public AuthorService(IUnitOfWork<Author> unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
-        {
-
-        }
+        { }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace OBS.Business.Models
 {
-    public class Book
+    public class BookModel
     {
         public int ID { get; set; }
         public string Title { get; set; }
@@ -11,8 +11,8 @@
         public ICollection<AuthorModel> Authors { get; set; }
 
         public int PublisherID { get; set; }
-        public Publisher Publisher { get; set; }
+        public PublisherModel Publisher { get; set; }
 
-        public ICollection<OrderItem> OrderItems { get; set; }
+        public ICollection<OrderItemModel> OrderItems { get; set; }
     }
 }
