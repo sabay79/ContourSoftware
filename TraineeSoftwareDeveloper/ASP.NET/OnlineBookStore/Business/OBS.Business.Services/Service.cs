@@ -34,7 +34,7 @@ namespace OBS.Business.Services
             {
                 var entity = _mapper.Map<TEntity>(model);
                 _unitOfWork.Repository.Add(entity);
-                _unitOfWork.Repository.Save();
+                _unitOfWork.Save();
             }
             catch (Exception ex)
             {
@@ -48,7 +48,7 @@ namespace OBS.Business.Services
             {
                 var entity = _mapper.Map<TEntity>(model);
                 _unitOfWork.Repository.Update(entity);
-                _unitOfWork.Repository.Save();
+                _unitOfWork.Save();
             }
             catch (Exception ex)
             {
@@ -64,7 +64,7 @@ namespace OBS.Business.Services
                 if (entity != null)
                 {
                     _unitOfWork.Repository.Delete(entity);
-                    _unitOfWork.Repository.Save();
+                    _unitOfWork.Save();
                 }
             }
             catch (Exception ex)

@@ -1,18 +1,18 @@
-﻿using OBS.Data;
-//using OBS.Data.Interfaces;
+﻿//using OBS.Data.Interfaces;
 //using OBS.Data.Models;
 //using OBS.Data.Services;
 
-try
-{
-    using var _dbContext = new BookStoreDbContext();
-    BookStoreDbInitializer.Initialize(_dbContext);
-    Console.WriteLine("Database seeding Successfull.");
-}
-catch (Exception ex)
-{
-    Console.WriteLine(ex.Message.ToString());
-}
+//try
+//{
+//    using var _dbContext = new BookStoreDbContext();
+//    BookStoreDbInitializer.Initialize(_dbContext);
+//    Console.WriteLine("Database seeding Successfull.");
+//}
+//catch (Exception ex)
+//{
+//Console.WriteLine(ex.Message.ToString());
+Console.WriteLine("Saba");
+//}
 
 // REPOSITORY PATTERN //
 // Repository Pattern promotes a clean separation of concerns

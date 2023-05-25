@@ -9,9 +9,11 @@
         public DateTime DeliveryDate { get; set; }
         public int DeliveryCharges { get; set; }
 
-        public ICollection<OrderItem>? OrderItems { get; set; }
+        public virtual ICollection<OrderItem>? OrderItems { get; set; }
+
         public int CustomerID { get; set; }
-        public Customer Customer { get; set; }
+        public virtual Customer Customer { get; set; }
+
         public int OrderPrice()
         {
             var orderItemsPrice = 0;

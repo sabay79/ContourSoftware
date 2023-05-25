@@ -8,11 +8,11 @@
         public int Price { get; set; }
         public DateTime Year { get; set; }
 
-        public ICollection<Author> Authors { get; set; }
+        public virtual ICollection<AuthorBook> BookAuthors { get; set; }
 
         public int PublisherID { get; set; }
-        public Publisher Publisher { get; set; }
+        public virtual Publisher Publisher { get; set; }
 
-        public ICollection<OrderItem> OrderItems { get; set; }
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
     }
 }

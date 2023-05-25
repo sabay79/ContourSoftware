@@ -7,6 +7,6 @@
         public Gender Gender { get; set; }
         public string Email { get; set; }
 
-        public ICollection<Book> Books { get; set; }
+        public virtual ICollection<AuthorBook> AuthorBooks { get; set; }
     }
 }
