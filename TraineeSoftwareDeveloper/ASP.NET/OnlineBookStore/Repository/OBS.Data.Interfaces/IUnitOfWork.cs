@@ -4,6 +4,8 @@
     {
         IRepository<TEntity> Repository { get; }
         //IAuthorRepository Authors { get; }
+        //IRepository<TEntity> Repository { get; }
+        //IAuthorRepository Authors { get; }
         //IPublisherRepository Publishers { get; }
         //IBookRepository Books { get; }
         //ICustomerRepository Customers { get; }

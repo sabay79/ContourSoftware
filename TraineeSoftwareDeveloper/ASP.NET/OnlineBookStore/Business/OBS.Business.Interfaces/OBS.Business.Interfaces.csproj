@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Repository\OBS.Data.Models\OBS.Data.Models.csproj" />
     <ProjectReference Include="..\OBS.Business.Models\OBS.Business.Models.csproj" />
   </ItemGroup>
 

@@ -22,9 +22,10 @@ namespace OBS.DependencyInjection
 
             // Unit Of Work Configuration
             //services.AddTransient<IUnitOfWork, UnitOfWork>();
-            services.AddTransient(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
+            services.AddScoped(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
 
             // All of the Custom Configuration - Dependency Injection
+            //services.AddScoped(typeof(IService<>), typeof(Service<>));
             services.AddScoped<IAuthorService, AuthorService>();
             services.AddScoped<IPublisherService, PublisherService>();
             services.AddScoped<IBookService, BookService>();

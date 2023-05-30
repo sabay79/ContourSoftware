@@ -6,7 +6,7 @@ namespace OBS.Data.Services
     {
         private readonly BookStoreDbContext _dbContext;
         private readonly IRepository<TEntity> _repository;
-        //public IAuthorRepository Authors { get; }
+        //public IAuthorRepository authors;
         //public IPublisherRepository Publishers { get; }
         //public IBookRepository Books { get; }
         //public ICustomerRepository Customers { get; }
@@ -17,7 +17,7 @@ namespace OBS.Data.Services
         {
             _dbContext = dbContext;
             _repository = repository;
-            //Authors = authorRepository;
+            //authors = authorRepository;
             //Publishers = publisherRepository;
             //Books = bookRepository;
             //Customers = customerRepository;
@@ -26,6 +26,7 @@ namespace OBS.Data.Services
         }
 
         public IRepository<TEntity> Repository => _repository;
+        //public IAuthorRepository Authors => authors;
 
         #region DatabaseTransactionApproach
         public void BeginTransaction()

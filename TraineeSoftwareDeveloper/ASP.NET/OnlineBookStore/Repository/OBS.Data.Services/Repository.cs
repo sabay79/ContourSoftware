@@ -14,6 +14,8 @@ namespace OBS.Data.Services
         }
 
         public IEnumerable<TEntity> GetAll() => _dbSet.ToList();
+        public IEnumerable<TEntity> GetAllInclude(string include) => _dbSet.Include(include).ToList();
+        // pass name in string and then split and then use here
         public TEntity GetByID(int id) => _dbSet.Find(id);
         public void Add(TEntity entity) => _dbSet.Add(entity);
         public void Update(TEntity entity) => _dbSet.Update(entity);

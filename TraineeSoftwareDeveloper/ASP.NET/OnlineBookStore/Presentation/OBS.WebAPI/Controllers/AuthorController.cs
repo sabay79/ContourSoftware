@@ -19,6 +19,7 @@ namespace OBS.WebAPI.Controllers
         public ActionResult<IEnumerable<AuthorModel>> GetAll()
         {
             var authors = _authorService.GetAll();
+            //var authors = _authorService.GetAuthorBooks();
             return Ok(authors);
         }
 

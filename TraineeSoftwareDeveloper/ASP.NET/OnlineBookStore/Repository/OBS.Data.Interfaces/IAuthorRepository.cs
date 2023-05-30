@@ -3,5 +3,7 @@
 namespace OBS.Data.Interfaces
 {
     public interface IAuthorRepository : IRepository<Author>
-    { }
+    {
+        //IEnumerable<Author> GetAuthorBooks();
+    }
 }
