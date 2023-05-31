@@ -9,8 +9,10 @@ using PartialClass;
 
 Console.WriteLine("Partial Class Example");
 
-StudentPartial obj = new StudentPartial();
-obj.FirstName = "Saba";
-obj.LastName = "Yashfeen";
+StudentPartial obj = new()
+{
+    FirstName = "Saba",
+    LastName = "Yashfeen"
+};
 
 Console.WriteLine(obj.GetFullName());
