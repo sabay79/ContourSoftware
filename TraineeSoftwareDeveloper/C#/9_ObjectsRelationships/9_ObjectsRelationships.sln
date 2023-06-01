@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RelationshipAmongObjects", "RelationshipAmongObjects\RelationshipAmongObjects.csproj", "{3CB963FB-BC8D-42D5-A9AD-57EDCE1E02E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3CB963FB-BC8D-42D5-A9AD-57EDCE1E02E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CB963FB-BC8D-42D5-A9AD-57EDCE1E02E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CB963FB-BC8D-42D5-A9AD-57EDCE1E02E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CB963FB-BC8D-42D5-A9AD-57EDCE1E02E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7533D7CA-80C6-4717-903D-BE2CCED473A4}
+	EndGlobalSection
+EndGlobal
