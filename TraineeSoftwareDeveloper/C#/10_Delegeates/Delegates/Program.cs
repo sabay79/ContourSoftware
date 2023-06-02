@@ -17,6 +17,18 @@
 public delegate void Calculation(int a, int b);
 public delegate void Calculation2(int x);
 public delegate void Dummy();
+
+// SINGLE CAST DELEGATE //
+// Single cast delegate point to single method ata a time
+// Delegate is assigned to single method at a time
+// Reference of one method at a time
+
+// MULTI CAST DELEGATE //
+// When a delegate is wrapped with more than one method that is known as a multicast delegate
+// In C#, delegates are multicast, which mean they can point to more than one function at a time
+// += and -= are used to implement multicast delegates
+// Refernce of more than one method at a time
+
 class Program
 {
     public static void Addition(int a, int b) => Console.WriteLine($"Addition Result is : {a + b}");
@@ -59,6 +71,14 @@ class Program
 
         Dummy obj4 = new(DummyMethod);
         obj4();
+
+        // Multicast Delegate
+        // += add refernce, -= remove reference
+        Calculation obj5 = new Calculation(Addition);
+        obj += Subtraction;
+        obj -= Product;
+        obj += Divide;
+        obj.Invoke(20, 10);
     }
 }
 
