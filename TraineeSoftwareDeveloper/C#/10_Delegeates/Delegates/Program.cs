@@ -15,6 +15,8 @@
 // Using delegates, you can call any method which is identified at run-time
 
 public delegate void Calculation(int a, int b);
+public delegate void Calculation2(int x);
+public delegate void Dummy();
 class Program
 {
     public static void Addition(int a, int b) => Console.WriteLine($"Addition Result is : {a + b}");
@@ -22,6 +24,11 @@ class Program
     public static void Product(int a, int b) => Console.WriteLine($"Product Result is : {a * b}");
     public static void Divide(int a, int b) => Console.WriteLine($"Divide Result is : {a / b}");
     public static void Remainder(int a, int b) => Console.WriteLine($"Remainder Result is : {a % b}");
+
+    public static void Square(int x) => Console.WriteLine($"Square of {x} is : {x * x}");
+    public static void Cube(int x) => Console.WriteLine($"Cube of {x} is : {x * x * x}");
+
+    public static void DummyMethod() => Console.WriteLine("This is a no-parameterized Dummy Method.");
 
     private static void Main()
     {
@@ -36,12 +43,22 @@ class Program
         obj = Product;
         obj(20, 10);
 
-        // Can create ultiple objects as well
+        // Can create multiple objects as well
         Calculation obj1 = new(Program.Divide);
         obj1(20, 10);
 
         obj1 = Remainder;
         obj1(20, 10);
+
+        Calculation2 obj3 = new(Square);
+        obj3.Invoke(2);
+
+        // Can point to multiple methods as well
+        obj3 = Cube;
+        obj3(3);
+
+        Dummy obj4 = new(DummyMethod);
+        obj4();
     }
 }
 
