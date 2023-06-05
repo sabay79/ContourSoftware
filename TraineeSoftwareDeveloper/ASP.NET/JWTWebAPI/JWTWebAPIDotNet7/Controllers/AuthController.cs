@@ -63,9 +63,9 @@ namespace JWTWebAPIDotNet7.Controllers
             var key = new SymmetricSecurityKey(Encoding.UTF8
                     .GetBytes(_configuration.GetSection("AppSettings:Token").Value!));
 
-            
+
             // Alternate, if key is not stored in AppSetting.json
-            //var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("AaBbCDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"));
+            //var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("AaBbCDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz012345678909876543210"));
 
             // Credentials are needed with the key and then signatures 
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
