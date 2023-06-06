@@ -2,7 +2,7 @@
 
 namespace OBS.Data.Models.IdentityModels
 {
-    public class Register
+    public class User
     {
         [Required(ErrorMessage = "Username is required")]
         public string Username { get; set; }
