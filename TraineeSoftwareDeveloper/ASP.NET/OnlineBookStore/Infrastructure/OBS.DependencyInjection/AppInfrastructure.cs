@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OBS.Business.Interfaces;
@@ -13,9 +15,22 @@ namespace OBS.DependencyInjection
     {
         public static void AppDISetup(this IServiceCollection services, IConfiguration configuration)
         {
-            //// Configure EntityFramework
+            // Configure EntityFramework
             services.AddDbContext<BookStoreDbContext>(options => options
                                                     .UseSqlServer(configuration.GetConnectionString("DbConnection")));
+
+            // Identity Framework 
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                    .AddEntityFrameworkStores<BookStoreDbContext>()
+                    .AddDefaultTokenProviders();
+
+            // Authentication
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            });
 
             // Repositories Configuration
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));

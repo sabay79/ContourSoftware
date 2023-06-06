@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using OBS.Data.Models;
 
 namespace OBS.Data
 {
-    public class BookStoreDbContext : DbContext
+    public class BookStoreDbContext : IdentityDbContext<IdentityUser>
     {
         public BookStoreDbContext()
         { }
@@ -33,7 +35,7 @@ namespace OBS.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
 
             // Configure Tables Name //
             modelBuilder.Entity<Book>().ToTable(nameof(Book));
@@ -87,6 +89,19 @@ namespace OBS.Data
                 .HasOne(o => o.Customer)
                 .WithMany(c => c.Orders)
                 .HasForeignKey(o => o.CustomerID);
+
+            // Seeding Database for Identity Roles
+            SeedRoles(modelBuilder);
+        }
+
+        private void SeedRoles(ModelBuilder builder)
+        {
+            builder.Entity<IdentityRole>().HasData
+                (
+                    new IdentityRole() { Name = "Admin", ConcurrencyStamp = "1", NormalizedName = "Admin" },
+                    new IdentityRole() { Name = "User", ConcurrencyStamp = "2", NormalizedName = "User" },
+                    new IdentityRole() { Name = "HR", ConcurrencyStamp = "3", NormalizedName = "HR" }
+                );
         }
     }
 }
