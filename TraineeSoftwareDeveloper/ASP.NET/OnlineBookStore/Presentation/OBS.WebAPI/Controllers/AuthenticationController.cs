@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using OBS.Business.Interfaces.Email;
+using OBS.Business.Models.Email;
 using OBS.Data.Models.IdentityModels;
 
 namespace OBS.WebAPI.Controllers
@@ -10,13 +12,13 @@ namespace OBS.WebAPI.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly IConfiguration _configuration;
+        private readonly IEmailService _emailService;
         public AuthenticationController(UserManager<IdentityUser> userManager,
-               RoleManager<IdentityRole> roleManager, IConfiguration configuration)
+               RoleManager<IdentityRole> roleManager, IEmailService emailService)
         {
             _userManager = userManager;
             _roleManager = roleManager;
-            _configuration = configuration;
+            _emailService = emailService;
         }
 
         [HttpPost]
@@ -69,6 +71,36 @@ namespace OBS.WebAPI.Controllers
                     {
                         Status = "Error",
                         Message = "Role Doesnot Exist!"
+                    });
+            }
+        }
+
+        [HttpGet]
+        public IActionResult TestEmail()
+        {
+            try
+            {
+                var message = new Message(
+                            new List<string> { "saba79.bda@gmail.com" },
+                            "Test",
+                            "This is Test Email...\n" +
+                            "https://www.youtube.com/watch?v=Oif6-76-Bfk&list=PLX4n-znUpc2b19AoYa4BMuhGuRnZItJK_&index=7");
+                _emailService.SendEmail(message);
+
+                return StatusCode(StatusCodes.Status200OK,
+                    new Response
+                    {
+                        Status = "Success",
+                        Message = "Email Sent Successfully!"
+                    });
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    new Response
+                    {
+                        Status = "Error",
+                        Message = "Failed to send Email!"
                     });
             }
         }

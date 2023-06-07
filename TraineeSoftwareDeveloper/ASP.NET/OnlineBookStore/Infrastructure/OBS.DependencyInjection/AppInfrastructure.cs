@@ -4,7 +4,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OBS.Business.Interfaces;
+using OBS.Business.Interfaces.Email;
+using OBS.Business.Models.Email;
 using OBS.Business.Services;
+using OBS.Business.Services.Email;
 using OBS.Data;
 using OBS.Data.Interfaces;
 using OBS.Data.Services;
@@ -31,6 +34,12 @@ namespace OBS.DependencyInjection
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
             });
+
+            // Email Configuration
+            var emailConfig = configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
+            services.AddSingleton(emailConfig);
+
+            services.AddScoped<IEmailService, EmailService>();
 
             // Repositories Configuration
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
