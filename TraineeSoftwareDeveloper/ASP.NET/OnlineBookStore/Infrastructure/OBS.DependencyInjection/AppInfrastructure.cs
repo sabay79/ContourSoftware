@@ -27,6 +27,10 @@ namespace OBS.DependencyInjection
                     .AddEntityFrameworkStores<BookStoreDbContext>()
                     .AddDefaultTokenProviders();
 
+            // Require Confirmed Email Configuration
+            services.Configure<IdentityOptions>(options =>
+                    options.SignIn.RequireConfirmedEmail = true);
+
             // Authentication
             services.AddAuthentication(options =>
             {
