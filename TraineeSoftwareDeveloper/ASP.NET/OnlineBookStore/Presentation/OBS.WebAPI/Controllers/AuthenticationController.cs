@@ -56,7 +56,18 @@ namespace OBS.WebAPI.Controllers
             };
             if (await _roleManager.RoleExistsAsync(role))
             {
-                var result = await _userManager.CreateAsync(user);
+                var result = await _userManager.CreateAsync(user, registerUser.Password);
+                /*
+                 * The Identity Framework has the following conditions for passwords:
+                        Minimum length: The password must be at least 6 characters long.
+                        Uppercase character: The password must contain at least one uppercase character.
+                        Lowercase character: The password must contain at least one lowercase character.
+                        Digit: The password must contain at least one digit.
+                        Non-alphanumeric character: The password must contain at least one non-alphanumeric character, such as a special character or punctuation mark.
+                    These conditions can be configured in the IdentityOptions.Password
+                 */
+                // SabaY, syn79.fl@gmail.com, Saba@1234
+
                 if (!result.Succeeded)
                 {
                     return StatusCode(StatusCodes.Status500InternalServerError,
@@ -127,7 +138,7 @@ namespace OBS.WebAPI.Controllers
             // Validate User
             var user = await _userManager.FindByNameAsync(loginUser.Username);
             // Check user and password
-            if (user != null && await _userManager.CheckPasswordAsync(user, loginUser.Password)) 
+            if (user != null && await _userManager.CheckPasswordAsync(user, loginUser.Password))
             {
                 // Claim List
                 var authClaims = new List<Claim>
@@ -137,7 +148,7 @@ namespace OBS.WebAPI.Controllers
                 };
 
                 // Get all roles related to user
-                var userRoles = await _userManager.GetRolesAsync(user); 
+                var userRoles = await _userManager.GetRolesAsync(user);
 
                 // Add Roles to the list of Claims
                 foreach (var role in userRoles)
