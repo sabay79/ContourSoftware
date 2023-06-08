@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OBS.Business.Interfaces;
 using OBS.Business.Models;
 
 namespace OBS.WebAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AuthorController : ControllerBase
@@ -25,6 +27,7 @@ namespace OBS.WebAPI.Controllers
 
         // GET : API/Author{id}
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin")]
         public ActionResult<AuthorModel> Get(int id)
         {
             var author = _authorService.GetByID(id);
@@ -33,6 +36,7 @@ namespace OBS.WebAPI.Controllers
 
         // POST : API/Author
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult<AuthorModel> Add([FromBody] AuthorModel author)
         {
             _authorService.Add(author);
@@ -40,6 +44,7 @@ namespace OBS.WebAPI.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Admin")]
         public ActionResult<AuthorModel> Update([FromBody] AuthorModel author)
         {
             _authorService.Update(author);
@@ -47,6 +52,7 @@ namespace OBS.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             _authorService.Delete(id);
