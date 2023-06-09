@@ -1,13 +1,17 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using OBS.Business.Interfaces;
+using OBS.Business.Interfaces.Authentication;
 using OBS.Business.Interfaces.Email;
 using OBS.Business.Models.Email;
 using OBS.Business.Services;
+using OBS.Business.Services.Authentication;
 using OBS.Business.Services.Email;
 using OBS.Data;
 using OBS.Data.Interfaces;
@@ -58,6 +62,9 @@ namespace OBS.DependencyInjection
             services.AddSingleton(emailConfig);
 
             services.AddScoped<IEmailService, EmailService>();
+            services.AddMvc();
+            services.AddScoped<IUrlHelper, UrlHelper>();
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
 
             // Repositories Configuration
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
