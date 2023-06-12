@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SealedMethod", "SealedMethod\SealedMethod.csproj", "{4F8F2BC7-AC2D-4984-B9C0-4C8C2A28289A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SealedMethod", "SealedMethod\SealedMethod.csproj", "{4F8F2BC7-AC2D-4984-B9C0-4C8C2A28289A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MethodOR", "MethodOR\MethodOR.csproj", "{65BB249C-52CB-4C20-9706-33F385DEA4D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MethodOR", "MethodOR\MethodOR.csproj", "{65BB249C-52CB-4C20-9706-33F385DEA4D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionMethod", "ExtensionMethod\ExtensionMethod.csproj", "{25C52AF9-4A8B-44C2-801C-4BBF58C018A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{65BB249C-52CB-4C20-9706-33F385DEA4D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65BB249C-52CB-4C20-9706-33F385DEA4D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65BB249C-52CB-4C20-9706-33F385DEA4D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25C52AF9-4A8B-44C2-801C-4BBF58C018A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25C52AF9-4A8B-44C2-801C-4BBF58C018A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25C52AF9-4A8B-44C2-801C-4BBF58C018A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25C52AF9-4A8B-44C2-801C-4BBF58C018A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
