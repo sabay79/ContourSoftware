@@ -1,10 +1,14 @@
 import './App.css';
+import Header from './Header'
 
 function App() {
   return (
     // BEM convention
     <div className="App">
-      <h1>Let's Build a Full-Stack AMAZON Clone with REACT JS (Full E-Commerce Store)</h1>
+      {/* HEADER */}
+      <Header />
+      
+      {/* HOME */}
     </div>
   );
 }
