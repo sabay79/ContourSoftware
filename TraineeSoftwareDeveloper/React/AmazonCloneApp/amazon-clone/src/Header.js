@@ -6,27 +6,23 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 function Header() {
   return (
     <div className='header'>
-        <img className='header_logo' src='amazonLogo.png' />
-        <div className='header_search'>
-            <input className='header_searchInput' type='text' />
-            <SearchIcon className='header_searchIcon' />
+        <img className='header__logo' src='amazonLogo.png' alt="logo" />
+        <div className='header__search'>
+            <input className='header__searchInput' type='text' />
+            <SearchIcon className='header__searchIcon' />
         </div>
-        <div className='header_nav'>
-            <div className='header_option'>
-                <span className='header_optionLineOne'>Hello Guest</span>
-                <span className='header_optionLineTwo'>Sign In</span>
+        <div className='header__nav'>
+            <div className='header__option'>
+                <span className='header__optionLineOne'>Hello Guest</span>
+                <span className='header__optionLineTwo'>Sign In</span>
             </div>
-            <div className='header_option'>
-                <span className='header_optionLineOne'>Returns</span>
-                <span className='header_optionLineTwo'>& Orders</span>
+            <div className='header__option'>
+                <span className='header__optionLineOne'>Returns</span>
+                <span className='header__optionLineTwo'>& Orders</span>
             </div>
-            <div className='header_option'>
-                <span className='header_optionLineOne'>Your</span>
-                <span className='header_optionLineTwo'>Prime</span>
-            </div>
-            <div className='header_optionBasket'>
+            <div className='header__optionBasket'>
                 <ShoppingBasketIcon />
-                <span className='header_optionLineTwo header_basketCount'>0</span>
+                <span className='header__optionLineTwo header__basketCount'>0</span>
             </div>
         </div>
     </div>

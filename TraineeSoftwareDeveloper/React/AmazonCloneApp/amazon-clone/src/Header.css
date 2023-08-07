@@ -8,60 +8,60 @@
     z-index: 100;
 }
 
-.header_logo{
+.header__logo{
     width: 100px;
     object-fit: contain;
     margin: 0 20px;
     margin-top: 12px;
 }
 
-.header_search{
+.header__search{
     display: flex;
     flex: 1;
     align-items: center;
     border-radius: 24px;
 }
 
-.header_searchInput{
+.header__searchInput{
     height: 12px;
     padding: 10px;
     border: none;
     width: 100%;
 }
 
-.header_searchIcon{
+.header__searchIcon{
     padding: 5px;
     height: 22px !important;
     background-color: #cd9042;
 }
 
-.header_nav{
+.header__nav{
     display: flex;
     justify-content: space-evenly;
 }
 
-.header_option{
+.header__option{
     display: flex;
     flex-direction: column;
     margin: 0px 10px;
     color: white;
 }
 
-.header_optionLineOne{
+.header__optionLineOne{
     font-size: 10px;
 }
 
-.header_optionLineTwo{
+.header__optionLineTwo{
     font-size: 13px;
     font-weight: 800;
 }
 
-.header_optionBasket{
+.header__optionBasket{
     display: flex;
     align-items: center;
     color: white;
 }
 
-.header_basketCount{
+.header__basketCount{
     margin: 0px 10px;
 }
