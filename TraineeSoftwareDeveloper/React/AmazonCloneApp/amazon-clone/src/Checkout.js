@@ -10,7 +10,6 @@ function Checkout()
 
   return (
     <div className='checkout'>
-
         <div className='checkout__left'>
           <img className='checkout__ad' src='./checkoutAD.jpg' alt='Ad' />
           <div>
@@ -25,7 +24,6 @@ function Checkout()
                 image={item.image}
               />
             ))}
-
           </div>
         </div>
         

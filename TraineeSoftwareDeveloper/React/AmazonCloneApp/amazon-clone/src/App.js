@@ -3,22 +3,31 @@ import './App.css';
 import Header from './Header.js'
 import Home from './Home.js'
 import Checkout from './Checkout.js';
+import Login from './Login.js';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     //BEM Convention
-    <>
       <Router>
-        <div className="App">
-          <Header />        
+        <div className="App">   
           <Routes>
-            <Route path='/checkout' element={<Checkout/>} />
-            <Route path='/' element={<Home/>} />
+            <Route path='./login' element={<Login/>} />
+            <Route path='/checkout' element= {
+              <>
+                <Header />
+                <Checkout />
+              </>} 
+            />
+            <Route path='/' element= {
+              <>
+                <Header />
+                <Home />
+              </>} 
+            />
           </Routes>
         </div>
       </Router>
-    </>
   );
 }
 
