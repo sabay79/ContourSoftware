@@ -2,28 +2,23 @@ import React from 'react'
 import './App.css';
 import Header from './Header.js'
 import Home from './Home.js'
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import CheckOut from './Checkout.js';
+import Checkout from './Checkout.js';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     //BEM Convention
-    <Router>
-      <div className="App">
-      <Header />        
-        <Switch>
-
-          <Route path='/checkout'>
-            <CheckOut />
-          </Route>
-
-          <Route path='/'>
-            <Home />
-          </Route>
-
-        </Switch>
-      </div>
-    </Router>
+    <>
+      <Router>
+        <div className="App">
+          <Header />        
+          <Routes>
+            <Route path='/checkout' element={<Checkout/>} />
+            <Route path='/' element={<Home/>} />
+          </Routes>
+        </div>
+      </Router>
+    </>
   );
 }
 
