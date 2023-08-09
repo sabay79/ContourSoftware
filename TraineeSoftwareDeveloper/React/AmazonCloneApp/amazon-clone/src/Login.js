@@ -18,7 +18,7 @@ function Login() {
       if(auth){
         history('/');
       }
-      // It successfully signin a user with email and password //test123temp123@gmail.com
+      // It successfully signin a user with email and password //saba@gmail.com
       console.log(auth);
     })
     .catch(error => alert(error.message));
@@ -33,7 +33,7 @@ function Login() {
         if(auth){
           history('/');
         }
-        // It successfully created a new user with email and password //test123temp123@gmail.com
+        // It successfully created a new user with email and password //saba@gmail.com
         console.log(auth);
       })
       .catch(error => alert(error.message));

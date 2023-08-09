@@ -13,6 +13,16 @@ function Header() {
             auth.signOut();
         }
     }
+    const getUsername = (email) => {
+        const index = email.indexOf("@");
+        let username = email.substring(0, index);   // Get User Name from Email 
+        username = username[0].toUpperCase() + username.slice(1);   // Capitalized First Letter
+        return username;
+    }
+    var username;
+    if(user) {    
+        username = getUsername(user?.email);
+    }
 
     return (
         <div className='header'>
@@ -28,7 +38,7 @@ function Header() {
             <div className='header__nav'>
                 <Link to={!user && '/login'}>   {/* only directs to Login Page if there's no user */}
                     <div onClick={handleAuthentication} className='header__option'>
-                        <span className='header__optionLineOne'>Hello Guest</span>
+                        <span className='header__optionLineOne'>Hello {username}</span>
                         <span className='header__optionLineTwo'>
                             {user ? 'Sign Out' : 'Sign In'}
                         </span>
