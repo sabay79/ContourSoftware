@@ -1,6 +1,7 @@
 {
   "name": "amazon-clone",
   "version": "0.1.0",
+  "homepage": "https://clone-10ef9.web.app/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",
