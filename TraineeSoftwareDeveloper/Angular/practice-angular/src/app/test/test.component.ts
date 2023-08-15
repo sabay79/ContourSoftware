@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-test',
@@ -16,7 +16,8 @@ export class TestComponent
 
   successClass = "success";
   dangerClass = 'danger';
-
+  
+  @Input() myCountry: any;
   // Methods
   Welcome()
   {

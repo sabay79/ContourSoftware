@@ -23,7 +23,8 @@ input{
 .interpolation,
 .property-binding,
 .event-binding,
-.class-binding{
+.class-binding,
+.component-inputs{
     border: 1px dotted;
     padding: 10px; 
     margin: 10px;
@@ -61,3 +62,4 @@ button{
 .special{
     font-style: italic;
 }
+
