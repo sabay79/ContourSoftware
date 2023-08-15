@@ -1,36 +1,46 @@
 <h2><em>This is Test Component</em></h2>
 
-<fieldset>
-    <p>Welcome <strong>{{username}}</strong></p>
-    <small><em>This is an example of Interpolation</em></small> 
-    <br>
-</fieldset>
+<div class="interpolation">
+    <h3>Interpolation</h3>
+    <fieldset>
+        <p>Welcome <strong>{{username}}</strong></p>
+        <small><em>This is an example of Interpolation</em></small> 
+        <br>
+    </fieldset>
 
-<fieldset>
-    <p><strong>{{'Username : ' + username}}</strong></p>
-    <small><em>This is an example of Interpolation (String Concatenation)</em></small> 
-    <br>
-</fieldset>
+    <fieldset>
+        <p><strong>{{'Username : ' + username}}</strong></p>
+        <small><em>This is an example of Interpolation (String Concatenation)</em></small> 
+        <br>
+    </fieldset>
 
-<fieldset>
-    <p><strong>1 + 1 = {{1+1}}</strong></p>
-    <small><em>This is an example of Interpolation (Expression)</em></small>
-    <br>
-</fieldset>
+    <fieldset>
+        <p><strong>1 + 1 = {{1+1}}</strong></p>
+        <small><em>This is an example of Interpolation (Expression)</em></small>
+        <br>
+    </fieldset>
 
-<fieldset>
-    <p><strong>Username's Length: {{username.length}}</strong></p>
-    <small><em>This is an example of Interpolation (JS Properties)</em></small> 
-    <br>
-</fieldset>
+    <fieldset>
+        <p><strong>Username's Length: {{username.length}}</strong></p>
+        <small><em>This is an example of Interpolation (JS Properties)</em></small> 
+        <br>
+    </fieldset>
 
-<fieldset>
-    <p><strong>Uppercase: </strong> {{username.toUpperCase()}}</p>
-    <p><strong>Lowercase: </strong> {{username.toLowerCase()}}</p>
-</fieldset>
+    <fieldset>
+        <p><strong>Uppercase: </strong> {{username.toUpperCase()}}</p>
+        <p><strong>Lowercase: </strong> {{username.toLowerCase()}}</p>
+    </fieldset>
 
-<fieldset>
-    <p><strong><em>{{Welcome()}}</em></strong></p>
-    <small><em>This is an example of Interpolation (Method/Function Call)</em></small> 
-    <br>
-</fieldset>
+    <fieldset>
+        <p><strong><em>{{Welcome()}}</em></strong></p>
+        <small><em>This is an example of Interpolation (Method/Function Call)</em></small> 
+        <br>
+    </fieldset>
+</div>
+
+<div class="property-binding">
+    <h3>Property Binding</h3>
+
+    <input type="text" [placeholder]="placeholder">
+    <input type="text" [placeholder]="placeholder" [disabled]="isDisabled">
+ </div>

@@ -1,4 +1,4 @@
-h2, p, small{
+h2, h3, p, small{
     text-align: center;
 }
 
@@ -9,4 +9,20 @@ small{
 fieldset{
     margin: 20px;
     padding: 20px;
+    border-style: double;
+}
+
+input{
+    width: 85%;
+    margin: 5px 20px;
+    border: 1px solid darkgray;
+    height: 20px;
+    border-radius: 3px;
+}
+
+.interpolation,
+.property-binding{
+    border: 1px dotted;
+    padding: 10px; 
+    margin: 10px;
 }

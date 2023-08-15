@@ -5,9 +5,12 @@ import { Component } from '@angular/core';
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.css']
 })
-export class TestComponent {
+export class TestComponent 
+{
   //Properties
   username = 'Saba';
+  placeholder = 'Username';
+  isDisabled = true;
 
   // Methods
   Welcome()
