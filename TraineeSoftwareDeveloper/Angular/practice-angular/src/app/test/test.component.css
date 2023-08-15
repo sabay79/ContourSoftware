@@ -26,3 +26,7 @@ input{
     padding: 10px; 
     margin: 10px;
 }
+
+.property-binding input:last-child{
+    margin-bottom: 20px;
+}
