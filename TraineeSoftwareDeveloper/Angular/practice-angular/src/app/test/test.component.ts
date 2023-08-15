@@ -14,6 +14,9 @@ export class TestComponent
   isDisabled = true;
   greeting = '';
 
+  successClass = "success";
+  dangerClass = 'danger';
+
   // Methods
   Welcome()
   {

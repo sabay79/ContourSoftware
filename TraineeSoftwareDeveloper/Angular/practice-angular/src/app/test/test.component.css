@@ -22,7 +22,8 @@ input{
 
 .interpolation,
 .property-binding,
-.event-binding{
+.event-binding,
+.class-binding{
     border: 1px dotted;
     padding: 10px; 
     margin: 10px;
@@ -43,4 +44,20 @@ button{
     padding: 10px 15px;
     width: 85%;
     border: 1px solid rgb(221,0,49);
+}
+
+.success{
+    color: green;
+}
+
+.warn{
+    color: yellow;
+}
+
+.danger{
+    color: red;
+}
+
+.special{
+    font-style: italic;
 }

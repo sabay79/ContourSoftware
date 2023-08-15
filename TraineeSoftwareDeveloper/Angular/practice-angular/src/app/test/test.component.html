@@ -51,3 +51,12 @@
     <button (click)="Greet()">GREET</button>
     <p><em>{{greeting}}</em></p>
  </div>
+
+ <div class="class-binding">
+    <h3>Class Binding</h3>
+
+    <p class="success">Learning Angular</p>
+    <p [class]="dangerClass">Learning Angular</p>
+
+    <p class="special" [class]="successClass">Learning Angular</p>
+ </div>
