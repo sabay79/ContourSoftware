@@ -1,0 +1,12 @@
+h2, p, small{
+    text-align: center;
+}
+
+small{
+    display: block;
+}
+
+fieldset{
+    margin: 20px;
+    padding: 20px;
+}
