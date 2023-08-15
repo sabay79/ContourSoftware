@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.css']
 })
+
 export class TestComponent 
 {
   //Properties
@@ -24,4 +25,5 @@ export class TestComponent
     this.greeting = 'Hello ' + this.username;
     console.log(this.greeting);
   }
+  
 }
