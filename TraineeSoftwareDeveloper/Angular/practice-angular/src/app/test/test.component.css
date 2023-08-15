@@ -21,7 +21,8 @@ input{
 }
 
 .interpolation,
-.property-binding{
+.property-binding,
+.event-binding{
     border: 1px dotted;
     padding: 10px; 
     margin: 10px;
@@ -29,4 +30,17 @@ input{
 
 .property-binding input:last-child{
     margin-bottom: 20px;
+}
+
+.event-binding{
+    text-align: center;
+}
+
+button{
+    background-color: rgb(221,0,49);
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    width: 85%;
+    border: 1px solid rgb(221,0,49);
 }

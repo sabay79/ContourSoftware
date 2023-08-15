@@ -11,10 +11,17 @@ export class TestComponent
   username = 'Saba';
   placeholder = 'Username';
   isDisabled = true;
+  greeting = '';
 
   // Methods
   Welcome()
   {
     return 'Welcome ' + this.username; 
+  }
+
+  Greet()
+  {
+    this.greeting = 'Hello ' + this.username;
+    console.log(this.greeting);
   }
 }
