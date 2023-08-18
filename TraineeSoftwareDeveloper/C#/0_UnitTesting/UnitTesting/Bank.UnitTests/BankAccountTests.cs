@@ -53,8 +53,19 @@ namespace Bank.UnitTests
 
             BankAccount account = new("Mr. Bryan", beginningBalance);
 
-            // Act & Assert
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => account.Debit(debitAmount));
+            // Act
+            try
+            {
+                account.Debit(debitAmount);
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                //Assert
+                StringAssert.Contains(ex.Message, BankAccount.DebitAmountExceedsBalanceMessage);
+            }
+
+            // Add an Assert.Fail assert at the end of the test method to handle the case where no exception is thrown.          
+            Assert.Fail("Expected exception was not thrown");
         }
     }
 }
