@@ -61,10 +61,9 @@ namespace Payment.Business.Services
         {
             try
             {
-                var paymentDetailModel = GetById(id);
-                if (paymentDetailModel != null)
+                var paymentDetail = _paymentDetailRepository.GetById(id);
+                if (paymentDetail != null)
                 {
-                    var paymentDetail = _mapper.Map<PaymentDetail>(paymentDetailModel);
                     _paymentDetailRepository.Delete(paymentDetail);
                 }
             }

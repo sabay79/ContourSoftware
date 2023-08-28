@@ -4,19 +4,11 @@ using Payment.Data.Models;
 
 namespace Payment.Business.Services
 {
-    public class MapperConfig
+    public class MapperConfig : Profile
     {
-        public static Mapper InitializeAutomapper()
+        public MapperConfig()
         {
-            // Provide all Mapper Configuration
-            MapperConfiguration config = new(cfg => cfg.CreateMap<PaymentDetailModel, PaymentDetail>().ReverseMap());
-
-            // Create Instance of Mapper
-            Mapper mapper = new(config);
-
-            //  Return that Instance
-            return mapper;
-
+            CreateMap<PaymentDetailModel, PaymentDetail>().ReverseMap();
         }
     }
 }
