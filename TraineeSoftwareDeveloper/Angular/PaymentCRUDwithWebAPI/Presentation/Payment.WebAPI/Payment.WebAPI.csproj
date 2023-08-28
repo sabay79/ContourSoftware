@@ -30,8 +30,4 @@
     <ProjectReference Include="..\..\Repository\Payment.Data\Payment.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>
