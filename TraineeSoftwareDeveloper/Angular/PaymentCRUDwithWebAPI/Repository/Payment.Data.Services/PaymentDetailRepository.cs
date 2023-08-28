@@ -63,7 +63,7 @@ namespace Payment.Data.Services
             {
                 _dbContext.SaveChanges();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
