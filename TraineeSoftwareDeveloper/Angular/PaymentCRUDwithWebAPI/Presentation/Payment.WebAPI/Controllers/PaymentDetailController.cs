@@ -29,8 +29,21 @@ namespace Payment.WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult<PaymentDetailModel> Put([FromBody] PaymentDetailModel paymentDetailModel)
+        public ActionResult<PaymentDetailModel> Put(int id, [FromBody] PaymentDetailModel paymentDetailModel)
         {
+            if (id != paymentDetailModel.PaymentDetailID)
+                return BadRequest();
+
+            _paymentDetailService.Update(paymentDetailModel);
+            return Ok(paymentDetailModel);
+        }
+
+        [HttpPatch("{id}")]
+        public ActionResult<PaymentDetailModel> Patch(int id, [FromBody] PaymentDetailModel paymentDetailModel)
+        {
+            if (id != paymentDetailModel.PaymentDetailID)
+                return BadRequest();
+
             _paymentDetailService.Update(paymentDetailModel);
             return Ok(paymentDetailModel);
         }
