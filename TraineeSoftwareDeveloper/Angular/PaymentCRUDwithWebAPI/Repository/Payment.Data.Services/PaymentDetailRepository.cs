@@ -20,25 +20,53 @@ namespace Payment.Data.Services
 
         public void Add(PaymentDetail paymentDetail)
         {
-            _dbSet.Add(paymentDetail);
-            Save();
+            try
+            {
+                _dbSet.Add(paymentDetail);
+                Save();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         public void Update(PaymentDetail paymentDetail)
         {
-            _dbSet.Update(paymentDetail);
-            Save();
+            try
+            {
+                _dbSet.Update(paymentDetail);
+                Save();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         public void Delete(PaymentDetail paymentDetail)
         {
-            _dbSet.Remove(paymentDetail);
-            Save();
+            try
+            {
+                _dbSet.Remove(paymentDetail);
+                Save();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private void Save()
         {
-            _dbContext.SaveChanges();
+            try
+            {
+                _dbContext.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
