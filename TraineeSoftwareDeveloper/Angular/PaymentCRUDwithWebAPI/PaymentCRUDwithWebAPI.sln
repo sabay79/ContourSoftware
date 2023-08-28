@@ -13,17 +13,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payment.WebAPI", "Presentation\Payment.WebAPI\Payment.WebAPI.csproj", "{6D00C095-2E0E-4C42-B392-B21E8964356B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payment.Data.Interfaces", "Repository\Payment.Data.Interfaces\Payment.Data.Interfaces.csproj", "{7A1C8C42-4022-4977-AB3D-45D04715C3DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payment.Data.Interfaces", "Repository\Payment.Data.Interfaces\Payment.Data.Interfaces.csproj", "{7A1C8C42-4022-4977-AB3D-45D04715C3DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payment.Data.Services", "Repository\Payment.Data.Services\Payment.Data.Services.csproj", "{7414C0D6-03A3-4E8F-93A4-3C01B91D9300}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payment.Data.Services", "Repository\Payment.Data.Services\Payment.Data.Services.csproj", "{7414C0D6-03A3-4E8F-93A4-3C01B91D9300}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{586E9B4B-379F-4B53-8592-EC783AECCF11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payment.Business.Models", "Business\Payment.Business.Models\Payment.Business.Models.csproj", "{D1100FC0-CB7A-4328-90F9-EA6B49B4E0CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payment.Business.Models", "Business\Payment.Business.Models\Payment.Business.Models.csproj", "{D1100FC0-CB7A-4328-90F9-EA6B49B4E0CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payment.Business.Interfaces", "Business\Payment.Business.Interfaces\Payment.Business.Interfaces.csproj", "{1D6C9B3E-1840-412B-B0E3-A92D5FC38957}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payment.Business.Interfaces", "Business\Payment.Business.Interfaces\Payment.Business.Interfaces.csproj", "{1D6C9B3E-1840-412B-B0E3-A92D5FC38957}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payment.Business.Services", "Business\Payment.Business.Services\Payment.Business.Services.csproj", "{B069C0C9-8AB3-4D14-9037-40F1E94E017A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payment.Business.Services", "Business\Payment.Business.Services\Payment.Business.Services.csproj", "{B069C0C9-8AB3-4D14-9037-40F1E94E017A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B9F76B8B-8F26-4C0D-A999-F9B48C7E4FF7}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
