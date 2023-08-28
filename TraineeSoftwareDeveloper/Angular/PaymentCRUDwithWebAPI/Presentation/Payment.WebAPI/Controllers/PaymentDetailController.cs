@@ -15,15 +15,15 @@ namespace Payment.WebAPI.Controllers
             _paymentDetailService = paymentDetailService;
         }
 
-        // GET: api/<PaymentDetailController>
+        // GET
         [HttpGet]
         public ActionResult<IEnumerable<PaymentDetailModel>> Get() => Ok(_paymentDetailService.GetAll());
 
-        // GET api/<PaymentDetailController>/5
+        // GET By ID
         [HttpGet("{id}")]
         public ActionResult<PaymentDetailModel> Get(int id) => Ok(_paymentDetailService.GetById(id));
 
-        // POST api/<PaymentDetailController>
+        // POST
         [HttpPost]
         public ActionResult<PaymentDetailModel> Post([FromBody] PaymentDetailModel paymentDetailModel)
         {
@@ -31,7 +31,7 @@ namespace Payment.WebAPI.Controllers
             return CreatedAtAction(nameof(Get), new { id = paymentDetailModel.PaymentDetailID }, paymentDetailModel);
         }
 
-        // PUT api/<PaymentDetailController>/5
+        // PUT
         [HttpPut("{id}")]
         public ActionResult<PaymentDetailModel> Put([FromBody] PaymentDetailModel paymentDetailModel)
         {
@@ -39,7 +39,7 @@ namespace Payment.WebAPI.Controllers
             return Ok(paymentDetailModel);
         }
 
-        // DELETE api/<PaymentDetailController>/5
+        // DELETE 
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
