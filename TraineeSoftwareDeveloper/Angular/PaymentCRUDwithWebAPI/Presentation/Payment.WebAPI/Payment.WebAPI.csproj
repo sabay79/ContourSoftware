@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.10">
@@ -22,7 +23,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Business\Payment.Business.Interfaces\Payment.Business.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Business\Payment.Business.Services\Payment.Business.Services.csproj" />
     <ProjectReference Include="..\..\Repository\Payment.Data.Models\Payment.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Repository\Payment.Data.Services\Payment.Data.Services.csproj" />
     <ProjectReference Include="..\..\Repository\Payment.Data\Payment.Data.csproj" />
   </ItemGroup>
 

@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Repository\Payment.Data.Interfaces\Payment.Data.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Repository\Payment.Data.Models\Payment.Data.Models.csproj" />
+    <ProjectReference Include="..\Payment.Business.Interfaces\Payment.Business.Interfaces.csproj" />
+    <ProjectReference Include="..\Payment.Business.Models\Payment.Business.Models.csproj" />
+  </ItemGroup>
+
+</Project>
