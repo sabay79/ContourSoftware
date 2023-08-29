@@ -7,7 +7,9 @@ import { PaymentDetailService } from '../shared/payment-detail.service';
   styles: [
   ]
 })
-export class PaymentDetailsComponent implements OnInit {
+
+export class PaymentDetailsComponent implements OnInit 
+{
   
   constructor(public service: PaymentDetailService) {}
   
