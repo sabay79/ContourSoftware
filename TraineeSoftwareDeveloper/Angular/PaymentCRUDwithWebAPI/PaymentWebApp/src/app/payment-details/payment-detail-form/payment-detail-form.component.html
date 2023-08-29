@@ -1,1 +1,55 @@
-<p>Payment-detail-form works!</p>
+<form  #form="ngForm" (submit)="onSubmit(form)">
+
+    <!--PAYMENT DETAIL ID-->
+    <input type="hidden" name="paymentDetailID" [value]="service.formData.paymentDetailID">
+
+    <!--CARD HOLDER NAME-->
+    <div class="mb-3">
+        <label for="cardOwnerName">Card Owner Name</label>
+        <input type="text" name="cardOwnerName"
+                class="form-control form-control-lg" 
+                placeholder="Name on Card"
+                #cardOwnerName = "ngModel"
+                [(ngModel)] = "service.formData.cardOwnerName">
+    </div>
+    
+    <!--CARD NUMBER-->
+    <div class="mb-3">
+        <label for="cardNumber">Card Number</label>
+        <input type="text" name="cardNumber"
+                class="form-control form-control-lg" 
+                placeholder="16 Digit Card Number"
+                #cardNumber = "ngModel"
+                [(ngModel)] = "service.formData.cardNumber">
+    </div>
+
+    <div class="row">
+
+        <!--SECURITY CODE-->
+        <div class="mb-3 col-6">
+            <label for="securityCode">Security Code</label>
+            <input type="password" name="securityCode"
+                    class="form-control form-control-lg"
+                    placeholder="CVV"
+                    #securityCode = "ngModel"
+                    [(ngModel)] = "service.formData.securityCode">
+        </div>
+        
+        <!--EXPIRATION DATE-->
+        <div class="mb-3 col-6">
+            <label for="expirationDate">Valid Through</label>
+            <input type="text" name="expirationDate"
+                    class="form-control form-control-lg"
+                    placeholder="MM/YY"
+                    #expirationDate = "ngModel"
+                    [(ngModel)] = "service.formData.expirationDate">
+        </div>
+        
+    </div>
+
+    <!--SUBMIT BUTTON-->
+    <div class="d-grid">
+        <button class="btn btn-lg btn-success" type="submit">SUBMIT</button>
+    </div>
+
+</form>
