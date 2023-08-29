@@ -25,7 +25,7 @@ namespace Payment.WebAPI.Controllers
         public ActionResult<PaymentDetailModel> Post([FromBody] PaymentDetailModel paymentDetailModel)
         {
             _paymentDetailService.Add(paymentDetailModel);
-            return CreatedAtAction(nameof(Get), new { id = paymentDetailModel.PaymentDetailID }, paymentDetailModel);
+            return Ok(_paymentDetailService.GetAll());
         }
 
         [HttpPut("{id}")]
@@ -35,7 +35,7 @@ namespace Payment.WebAPI.Controllers
                 return BadRequest();
 
             _paymentDetailService.Update(paymentDetailModel);
-            return Ok(paymentDetailModel);
+            return Ok(_paymentDetailService.GetAll());
         }
 
         [HttpPatch("{id}")]
@@ -45,14 +45,14 @@ namespace Payment.WebAPI.Controllers
                 return BadRequest();
 
             _paymentDetailService.Update(paymentDetailModel);
-            return Ok(paymentDetailModel);
+            return Ok(_paymentDetailService.GetAll());
         }
 
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
             _paymentDetailService.Delete(id);
-            return Ok(_paymentDetailService.GetById(id));
+            return Ok(_paymentDetailService.GetAll());
         }
     }
 }
