@@ -1,9 +1,28 @@
 import { Injectable } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PaymentDetailService {
+export class PaymentDetailService 
+{
 
-  constructor() { }
+  url:string = environment.apiBaseUrl + '/PaymentDetail'
+
+  constructor(private http:HttpClient) { }
+
+  /* 
+    This will make a GET request to running instance of Web API 
+    to retrieve the Existing Payment Details
+  */
+ 
+  refreshList()
+  {
+    this.http.get(this.url)
+        .subscribe({
+          next: res => { console.log(res); },
+          error: err => { console.log(err); }
+    })
+  }
 }
