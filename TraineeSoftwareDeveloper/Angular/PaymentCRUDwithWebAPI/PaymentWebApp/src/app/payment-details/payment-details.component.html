@@ -7,8 +7,10 @@
     </div>
     <div class="col-6">
         <ul class="list-group">
-            <li class="list-group-item d-flex justify-content-between align-items-start mb-2 border px-4 py-3 rounded-3" *ngFor="let paymentDetail of service.list">
-                <div class="flex-grow-1 mouse-hover">
+            <li class="list-group-item d-flex justify-content-between align-items-start mb-2 border px-4 py-3 rounded-3" 
+                *ngFor="let paymentDetail of service.list">
+                <div class="flex-grow-1 mouse-hover"
+                    (click)="populateForm(paymentDetail)">
                     <div class="fw-bold">{{paymentDetail.cardOwnerName}}</div>
                     <div>{{paymentDetail.cardNumber}}</div>
                     <div class="fw-bold">{{paymentDetail.expirationDate}}</div>
