@@ -22,9 +22,9 @@ Trainee Software Developer
 <br />
 
 ### Getting Started with Entity Framework 6 Code First using MVC 5: https://learn.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/
+### Asp.net core Identity | Authentication & Authorization | Code First | EF CORE: https://www.youtube.com/playlist?list=PLX4n-znUpc2b19AoYa4BMuhGuRnZItJK_
 <br />
 
-### Asp.net core Identity | Authentication & Authorization | Code First | EF CORE: https://www.youtube.com/playlist?list=PLX4n-znUpc2b19AoYa4BMuhGuRnZItJK_
 ### C# 101: https://learn.microsoft.com/en-us/shows/csharp-101/
 ### .NET Core 101: https://learn.microsoft.com/en-us/shows/net-core-101/?wt.mc_id=educationaldotnet-c9-scottha
 ### ASP.NET Core 101: https://learn.microsoft.com/en-us/shows/aspnet-core-101/?wt.mc_id=educationaspnet-c9-niner
