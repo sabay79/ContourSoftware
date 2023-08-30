@@ -16,7 +16,8 @@
                     <div class="fw-bold">{{paymentDetail.expirationDate}}</div>
                 </div>
                 <span class="text-danger">
-                    <i class="fa fa-trash fa-lg mouse-hover" aria-hidden="true"></i>
+                    <i class="fa fa-trash fa-lg mouse-hover" aria-hidden="true"
+                        (click)="onDelete(paymentDetail.paymentDetailID)"></i>
                 </span>
             </li>
         </ul>
