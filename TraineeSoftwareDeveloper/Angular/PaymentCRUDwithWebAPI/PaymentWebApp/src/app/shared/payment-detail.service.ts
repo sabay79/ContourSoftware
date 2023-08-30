@@ -33,6 +33,8 @@ export class PaymentDetailService
 
   postPaymentDetail = () => this.http.post(this.url, this.formData);
 
+  putPaymentDetail = () => this.http.put(this.url + '/' + this.formData.paymentDetailID, this.formData);
+
   resetForm(form:NgForm)
   {
     form.form.reset();
