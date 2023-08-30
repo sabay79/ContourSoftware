@@ -17,16 +17,18 @@ export class PaymentDetailFormComponent
 
   onSubmit(form:NgForm)
   {
-    this.service.postPaymentDetail()
-        .subscribe({
-          next: res => 
-          { 
-            this.service.list = res as PaymentDetail[];
-            this.service.resetForm(form);
-            this.toastr.success('Inserted Successfully', 'Payment Detail Register')
-          },
-          error: err => {console.log(err); }
-        })
+    if(form.valid)
+    {
+      this.service.postPaymentDetail()
+      .subscribe({
+        next: res => 
+        { 
+          this.service.list = res as PaymentDetail[];
+          this.service.resetForm(form);
+          this.toastr.success('Inserted Successfully', 'Payment Detail Register')
+        },
+        error: err => {console.log(err); }
+      })
+    }
   }
-
 }

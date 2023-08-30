@@ -14,6 +14,10 @@ form input::placeholder{
     font-weight: 300;
 }
 
+form input.ng-invalid{
+    border-color: #DC3545;
+}
+
 .mouse-hover{
     cursor: pointer;
 }
