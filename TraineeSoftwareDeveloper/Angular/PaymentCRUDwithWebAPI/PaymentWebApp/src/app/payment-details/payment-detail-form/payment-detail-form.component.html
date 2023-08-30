@@ -1,4 +1,4 @@
-<form  #form="ngForm" (submit)="onSubmit(form)">
+<form  #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formSubmitted" novalidate>
 
     <!--PAYMENT DETAIL ID-->
     <input type="hidden" name="paymentDetailID" [value]="service.formData.paymentDetailID">

@@ -13,6 +13,7 @@ export class PaymentDetailService
   url : string = environment.apiBaseUrl + '/PaymentDetail'
   list : PaymentDetail[] = [];
   formData : PaymentDetail = new PaymentDetail();
+  formSubmitted:boolean = false;
 
   constructor(private http:HttpClient) { }
 
@@ -20,7 +21,7 @@ export class PaymentDetailService
     This will make a GET request to running instance of Web API 
     to retrieve the Existing Payment Details
   */
- 
+
   refreshList()
   {
     this.http.get(this.url)
@@ -36,6 +37,7 @@ export class PaymentDetailService
   {
     form.form.reset();
     this.formData= new PaymentDetail();
+    this.formSubmitted = false;
   }
 
 }
