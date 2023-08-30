@@ -1,4 +1,5 @@
-# ContourSoftware
+# Contour Software
+Trainee Software Developer
 
 ## Tutorials
 (Followed)
