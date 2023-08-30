@@ -13,6 +13,7 @@ Trainee Software Developer
 ### Create a web UI with ASP.NET Core: https://learn.microsoft.com/en-us/training/modules/create-razor-pages-aspnet-core/
 <br />
 
+### Build a Full-Stack AMAZON Clone with REACT JS for Beginners (Full E-Comm Store): https://www.youtube.com/watch?v=RDV3Z1KCBvo
 ### Asp.Net Core Web API CRUD with Angular 16: https://www.youtube.com/watch?v=OZGdKYzUYvU
 <br />
 
