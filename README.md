@@ -19,9 +19,9 @@ Trainee Software Developer
 
 ### Entity Framework documentation Hub: https://learn.microsoft.com/en-us/ef/
 ### Performance Tips - Entity Framework Core 101: https://learn.microsoft.com/en-us/shows/entity-framework-core-101/performance-tips
+### Getting Started with Entity Framework 6 Code First using MVC 5: https://learn.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/
 <br />
 
-### Getting Started with Entity Framework 6 Code First using MVC 5: https://learn.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/
 ### Asp.net core Identity | Authentication & Authorization | Code First | EF CORE: https://www.youtube.com/playlist?list=PLX4n-znUpc2b19AoYa4BMuhGuRnZItJK_
 <br />
 
