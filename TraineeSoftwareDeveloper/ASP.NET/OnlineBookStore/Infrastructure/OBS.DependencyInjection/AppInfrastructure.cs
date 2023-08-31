@@ -60,19 +60,17 @@ namespace OBS.DependencyInjection
             services.AddSingleton(emailConfig);
 
             services.AddScoped<IEmailService, EmailService>();
-            //services.AddMvc();
-            //services.AddScoped<IUrlHelper, UrlHelper>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
 
             // Repositories Configuration
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
             // Unit Of Work Configuration
-            //services.AddTransient<IUnitOfWork, UnitOfWork>();
+            //services.AddTransient<IUnitOfWork, UnitOfWork>(); //
             services.AddScoped(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
 
             // All of the Custom Configuration - Dependency Injection
-            //services.AddScoped(typeof(IService<>), typeof(Service<>));
+            //services.AddScoped(typeof(IService<>), typeof(Service<>)); //
             services.AddScoped<IAuthorService, AuthorService>();
             services.AddScoped<IPublisherService, PublisherService>();
             services.AddScoped<IBookService, BookService>();
