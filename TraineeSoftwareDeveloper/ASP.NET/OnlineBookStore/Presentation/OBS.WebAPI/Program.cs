@@ -33,7 +33,7 @@ builder.Services.AddSwaggerGen(options =>
                 Id = "Bearer"
             }
         },
-        new string[]{}
+        Array.Empty<string>()
         }
     });
 });
@@ -42,7 +42,6 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AppDISetup(builder.Configuration);
 
 var app = builder.Build();
-app.UseMvc();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

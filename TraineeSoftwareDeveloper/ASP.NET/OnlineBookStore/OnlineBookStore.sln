@@ -30,11 +30,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OBS.DependencyInjection", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{6761A08F-B953-4708-898D-1F26796F9744}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBS.Business.Models", "Business\OBS.Business.Models\OBS.Business.Models.csproj", "{E6DF2B7D-10EB-42E3-88A2-04075977D912}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OBS.Business.Models", "Business\OBS.Business.Models\OBS.Business.Models.csproj", "{E6DF2B7D-10EB-42E3-88A2-04075977D912}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBS.Business.Interfaces", "Business\OBS.Business.Interfaces\OBS.Business.Interfaces.csproj", "{96BF0A66-E65E-4D77-9BC5-3B30800A2562}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OBS.Business.Interfaces", "Business\OBS.Business.Interfaces\OBS.Business.Interfaces.csproj", "{96BF0A66-E65E-4D77-9BC5-3B30800A2562}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBS.Business.Services", "Business\OBS.Business.Services\OBS.Business.Services.csproj", "{2C230025-5899-4C00-BDAB-F10E34B00D1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OBS.Business.Services", "Business\OBS.Business.Services\OBS.Business.Services.csproj", "{2C230025-5899-4C00-BDAB-F10E34B00D1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
