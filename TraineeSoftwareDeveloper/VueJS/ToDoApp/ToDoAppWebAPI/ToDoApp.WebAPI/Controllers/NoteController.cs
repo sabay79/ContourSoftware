@@ -31,7 +31,7 @@ namespace ToDoApp.WebAPI.Controllers
 
         // GET: api/Note/5
         [HttpGet("{id}")]
-        public ActionResult<Note> GetNote(Guid id)
+        public ActionResult<Note> GetNote(int id)
         {
             var note = _service.Get(id);
 
@@ -48,12 +48,12 @@ namespace ToDoApp.WebAPI.Controllers
         public ActionResult<Note> PostNote(Note note)
         {
             _service.AddOrUpdate(note);
-            return CreatedAtAction("GetNote", note);
+            return CreatedAtAction("GetNote", new Note { Id = note.Id }, note);
         }
 
         // PUT: api/Note/5
         [HttpPut("{id}")]
-        public IActionResult PutNote(Guid id, Note note)
+        public IActionResult PutNote(int id, Note note)
         {
             if (id != note.Id)
             {
@@ -62,12 +62,12 @@ namespace ToDoApp.WebAPI.Controllers
 
             _service.AddOrUpdate(note);
 
-            return CreatedAtAction("GetNote", note);
+            return CreatedAtAction("GetNote", new Note { Id = note.Id }, note);
         }
 
         // DELETE: api/Note/5
         [HttpDelete("{id}")]
-        public IActionResult DeleteNote(Guid id)
+        public IActionResult DeleteNote(int id)
         {
             var note = _service.Get(id);
             if (note == null)
@@ -75,7 +75,7 @@ namespace ToDoApp.WebAPI.Controllers
                 return NotFound();
             }
 
-            _service.Delete(note.Result);   // https://stackoverflow.com/questions/12886559/cannot-implicitly-convert-type-from-task
+            _service.Delete(note);   // https://stackoverflow.com/questions/12886559/cannot-implicitly-convert-type-from-task
 
             return Ok(_service.Get(id));
         }

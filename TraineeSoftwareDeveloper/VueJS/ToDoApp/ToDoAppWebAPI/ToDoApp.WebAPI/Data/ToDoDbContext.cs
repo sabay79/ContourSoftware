@@ -16,7 +16,7 @@ namespace ToDoApp.WebAPI.Data
 
             // Data Seeding
             _ = modelBuilder.Entity<Note>()
-                        .HasData(new Note { Id = Guid.NewGuid(), Description = $"My First Note at {DateTime.Now}" });
+                        .HasData(new Note { Id = 1, Description = $"My First Note at {DateTime.Now}" });
         }
     }
 }

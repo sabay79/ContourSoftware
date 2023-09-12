@@ -12,9 +12,9 @@ namespace ToDoApp.WebAPI.Model
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<Note>> GetAll() => await _dbContext.Notes.ToListAsync();
+        public List<Note> GetAll() => _dbContext.Notes.ToList();
 
-        public async Task<Note> Get(Guid id) => await _dbContext.Notes.FindAsync(id);
+        public Note Get(int id) => _dbContext.Notes.Find(id);
 
         //public async void Add(Note note)
         //{
@@ -35,17 +35,24 @@ namespace ToDoApp.WebAPI.Model
         /// https://learn.microsoft.com/en-us/ef/ef6/saving/change-tracking/entity-state?redirectedfrom=MSDN
         /// </summary>
         /// <param name="note"></param>
-        public async void AddOrUpdate(Note note)
+        public void AddOrUpdate(Note note)
         {
-            _dbContext.Entry(note).State = note.Id == Guid.Parse("bd0c16cd-e1ef-4694-8429-06870c4af0b9")
-                                                    ? EntityState.Added
-                                                    : EntityState.Modified;
-            await _dbContext.SaveChangesAsync();
+            _dbContext.Entry(note).State = note.Id == 0
+                                            ? EntityState.Added
+                                            : EntityState.Modified;
+            Save();
         }
-        public async void Delete(Note note)
+
+        public void Delete(Note note)
         {
             _dbContext.Notes.Remove(note);
-            await _dbContext.SaveChangesAsync();
+            Save();
         }
+
+        private void Save()
+        {
+            _dbContext.SaveChanges();
+        }
+
     }
 }
