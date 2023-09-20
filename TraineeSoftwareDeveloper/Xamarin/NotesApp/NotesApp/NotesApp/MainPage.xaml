@@ -9,6 +9,7 @@
     </ContentPage.BindingContext>
 
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
             <RowDefinition Height="*" />
@@ -36,12 +37,29 @@
                 Text="Erase" BackgroundColor="Red" TextColor="White" 
                 Command="{Binding EraseCommand}" />
 
-        <CollectionView ItemsSource="{Binding AllNotes}"  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3">
+        <!--<CollectionView ItemsSource="{Binding AllNotes}"  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout>
                         <Frame>
                             <Label Text="{Binding .}" FontSize="Title" />
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>-->
+
+        <CollectionView Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3"
+                        ItemsSource="{Binding AllNotes}"
+                        SelectionMode="Single"
+                        SelectedItem="{Binding SelectedNote}"
+                        SelectionChangedCommand="{Binding SelectedNoteChangedCommand}"
+                        >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10, 10">
+                        <Frame>
+                            <Label Text="{Binding .}" VerticalTextAlignment="Center" />
                         </Frame>
                     </StackLayout>
                 </DataTemplate>
