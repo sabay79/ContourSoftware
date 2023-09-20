@@ -19,6 +19,7 @@ namespace NotesApp.ViewModels
             EraseCommand = new Command(() =>
             {
                 TheNote = string.Empty;
+                AllNotes.Clear();
             });
 
             SelectedNoteChangedCommand = new Command(async () =>

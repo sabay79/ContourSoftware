@@ -37,18 +37,6 @@
                 Text="Erase" BackgroundColor="Red" TextColor="White" 
                 Command="{Binding EraseCommand}" />
 
-        <!--<CollectionView ItemsSource="{Binding AllNotes}"  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout>
-                        <Frame>
-                            <Label Text="{Binding .}" FontSize="Title" />
-                        </Frame>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>-->
-
         <CollectionView Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3"
                         ItemsSource="{Binding AllNotes}"
                         SelectionMode="Single"
