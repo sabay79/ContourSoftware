@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Oren Stevens",
+      "email": "a.tortor@icloud.edu",
+      "phone": "1-469-463-8258",
+      "country": "France",
+      "postalZip": "9915"
+    },
+    {
+      "id": 2,
+      "name": "Kaitlin Mcclain",
+      "email": "lorem.ac.risus@aol.couk",
+      "phone": "(504) 221-1566",
+      "country": "Norway",
+      "postalZip": "1861"
+    },
+    {
+      "id": 3,
+      "name": "Ebony Mitchell",
+      "email": "dolor.fusce@google.com",
+      "phone": "1-822-213-1411",
+      "country": "Sweden",
+      "postalZip": "11-858"
+    },
+    {
+      "id": 4,
+      "name": "Bell Barrera",
+      "email": "pellentesque.habitant@icloud.ca",
+      "phone": "1-782-541-3647",
+      "country": "Pakistan",
+      "postalZip": "68946"
+    },
+    {
+      "id": 5,
+      "name": "Ann Sampson",
+      "email": "phasellus@outlook.org",
+      "phone": "(971) 753-8835",
+      "country": "Canada",
+      "postalZip": "B2M 8K4"
+    }
+  ]
+}
