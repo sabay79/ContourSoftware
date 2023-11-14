@@ -18,4 +18,3 @@ console.log(typeof booleanIsLoggedIn);
 // 1 => true; 0 => false
 // "" => false
 // "Saba" => true
-
