@@ -83,3 +83,17 @@ console.log(Object.entries(regularUser));
 
 console.log(regularUser.hasOwnProperty('fullName'));
 console.log(regularUser.hasOwnProperty('myName'));
+
+///////////////////////////// Object De-structure /////////////////////////////
+
+const course = {
+    courseName: 'JS',
+    price: 1000
+}
+
+//course.courseName
+const {courseName} = course
+console.log(courseName);
+
+const {courseName: courseN} = course
+console.log(courseN);
