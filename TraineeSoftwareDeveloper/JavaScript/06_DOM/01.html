@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Learning</title>
+</head>
+<body>
+    <div >
+        <h1  id="title" class="heading">DOM Learning<span style="display: none;">test text</span></h1>
+        
+        <h2>Lorem ipsum dolor sit.</h2>
+        <h2>Lorem ipsum dolor sit.</h2>
+        <h2>Lorem ipsum dolor sit.</h2>
+
+        <p>Lorem ipsum dolor sit amet.</p>
+
+        <ul>
+            <li class="list-item">one</li>
+            <li class="list-item">two</li>
+            <li class="list-item">three</li>
+        </ul>
+    </div>
+
+    <script>
+        const title = document.getElementById('title')
+        title.style.backgroundColor = 'blue';
+        title.style.color = 'white';
+        title.style.padding = '15px';
+        title.style.borderRadius = '15px';
+
+        console.log(title.innerText);
+        console.log(title.textContent);
+        console.log(title.innerHTML);
+
+        const ul = document.querySelector('ul');
+        console.log(ul);
+
+        const ilFirstInstance = ul.querySelector('li');
+        console.log(ilFirstInstance);
+
+        const ilAllInstancesIn_ul = ul.querySelectorAll('li');
+        console.log(ilAllInstancesIn_ul);
+
+        ilFirstInstance.style.backgroundColor = 'blue';
+        ilFirstInstance.style.color = 'white';
+        
+        ilAllInstancesIn_ul.forEach((li) => li.style.padding='10px');
+
+        const listItemClass = document.getElementsByClassName('list-item');
+        console.log(listItemClass);
+        const htmlCollectionToArray = Array.from(listItemClass);
+        htmlCollectionToArray.forEach((li) => {
+            li.style.color = 'coral';
+            li.innerText = li.innerText + ' JS';
+        })
+
+    </script>
+</body>
+</html>
+
+<!-- https://www.youtube.com/watch?v=DcjNkHtDj8A&list=PLu71SKxNbfoBuX3f4EOACle2y-tRC5Q37&index=32 -->
+<!-- https://www.youtube.com/watch?v=Ab6K57WjWTE&list=PLu71SKxNbfoBuX3f4EOACle2y-tRC5Q37&index=32 -->
+<!-- https://www.youtube.com/watch?v=xAvTgCsCHLs&list=PLu71SKxNbfoBuX3f4EOACle2y-tRC5Q37&index=33 -->
