@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <ul class="language">
+        <li>JS</li>
+    </ul>
+</body>
+<script>
+    /////////////////////////// CREATE ///////////////////////////
+    function addLanguage(langName) {
+        const li = document.createElement('li');
+        li.innerHTML = `${langName}`;
+        document.querySelector('.language')
+                .appendChild(li)
+    }
+    addLanguage('C#');
+    addLanguage('C');
+     
+    // Optimized Approach //
+    function addLanguageOpt(langName) {
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(langName));
+        document.querySelector('.language').appendChild(li);
+    }
+    addLanguageOpt('C++');
+
+    /////////////////////////// UPDATE ///////////////////////////
+    const firstLang = document.querySelector('li:first-child');
+    console.log(firstLang);
+    firstLang.outerHTML = '<li>TS</li>';
+
+    const secondLang = document.querySelector('li:nth-child(2)');
+    console.log(secondLang);
+
+    //secondLang.innerHTML = 'Py';
+
+    // Optimized Approach //
+    const newli = document.createElement('li');
+    newli.textContent = 'Py';
+    secondLang.replaceWith(newli);  
+    
+    /////////////////////////// DELETE ///////////////////////////
+    const lastLang = document.querySelector('li:last-child');
+    console.log(lastLang);
+    lastLang.remove();
+</script>
+</html>
