@@ -4,6 +4,8 @@
 
 ### Implementation [Here](https://stackblitz.com/edit/dom-project-chaiaurcode-mbuol7?file=index.html%3AL14)
 
+### [YouTube Tutorial](https://www.youtube.com/watch?v=EGqHVjU-fas&list=PLu71SKxNbfoBuX3f4EOACle2y-tRC5Q37&index=43)
+
 ## Solution Code
 
 ### Project 01 - Background Color Change on Click
@@ -83,4 +85,100 @@ setInterval(() => {
   date = new Date();
   clock.innerHTML = date.toLocaleTimeString();
 }, 1000);
+```
+
+### Project 04 - Guess a Number
+
+```javascript
+const randomNumber = parseInt(Math.random() * 100);
+
+const submit = document.querySelector('#subt');
+const userInput = document.querySelector('#guessField');
+const guessSlot = document.querySelector('.guesses');
+const remaining = document.querySelector('.lastResult');
+const lowOrHi = document.querySelector('.lowOrHi');
+const startOver = document.querySelector('.resultParas');
+
+const p = document.createElement('p');
+
+let prevGuess = [];
+let numGuess = 1;
+
+let playGame = true;
+
+if (playGame) {
+  submit.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const guess = parseInt(userInput.value);
+    validateGuess(guess);
+  });
+}
+
+function validateGuess(guess) {
+  if (isNaN(guess)) {
+    alert('Please enter a valid number');
+  } else if (guess < 1) {
+    alert('Please enter a number greater than 0');
+  } else if (guess > 100) {
+    alert('Please enter a number less than 100');
+  } else {
+    prevGuess.push(guess);
+    displayGuess(guess);
+
+    if (numGuess === 11) {
+      displayMessage(`Game Over. Number: ${randomNumber}`);
+      endGame();
+    } else {
+      checkGuess(guess);
+    }
+  }
+}
+
+function checkGuess(guess) {
+  if (guess === randomNumber) {
+    displayMessage('You guessed it RIGHT!');
+    endGame();
+  } else if (guess < randomNumber) {
+    displayMessage('Number is too LOW');
+  } else if (guess > randomNumber) {
+    displayMessage('Number is too HIGH');
+  }
+}
+
+function displayGuess(guess) {
+  userInput.value = '';
+  guessSlot.innerHTML += `${guess}  `;
+  numGuess++;
+  remaining.innerHTML = `${11 - numGuess}`;
+}
+
+function displayMessage(message) {
+  lowOrHi.innerHTML = `<h2>${message}</h2>`;
+}
+
+function endGame() {
+  userInput.value = '';
+  userInput.setAttribute('disabled', '');
+  p.classList.add('button');
+  p.innerHTML = `<button id="newGame">Start New Game</button>`;
+  startOver.appendChild(p);
+  playGame = false;
+  newGame();
+}
+
+function newGame() {
+  const newGameButton = document.querySelector('#newGame');
+  newGameButton.addEventListener('click', function (e) {
+    randomNumber = parseInt(Math.random() * 100);
+    prevGuess = [];
+    numGuess = 1;
+    guessSlot.innerHTML = '';
+    remaining.innerHTML = `${11 - numGuess} `;
+    userInput.removeAttribute('disabled');
+    startOver.removeChild(p);
+
+    playGame = true;
+  });
+}
 ```
