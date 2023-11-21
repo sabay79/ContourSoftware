@@ -34,5 +34,5 @@ Trainee Software Developer
 ### .NET Videos (Free videos for learning about .NET developer platform and how to use it): https://dotnet.microsoft.com/en-us/learn/videos
 <br />
 
-### JS Projects for Beginners: https://www.youtube.com/watch?v=EGqHVjU-fas&list=PLu71SKxNbfoBuX3f4EOACle2y-tRC5Q37&index=43
+### JavaScript Projects for Beginners: https://www.youtube.com/watch?v=EGqHVjU-fas&list=PLu71SKxNbfoBuX3f4EOACle2y-tRC5Q37&index=43
 <br />
