@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>API Request</title>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>Value</th>
+                <th>State</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>0</td>
+                <td>UNSENT</td>
+                <td>Client has been created. open() not called yet.</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>OPENED</td>
+                <td>open() has been called.</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>HEADERS_RECEIVED</td>
+                <td>send() has been called, and headers and status are available.</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>LOADING</td>
+                <td>Downloading; responseText holds partial data.</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>DONE</td>
+                <td>The operation is complete.</td>
+            </tr>
+        </table>
+        
+        <br>
+
+        <button>Get Data from API</button>
+        <div id="display-data" style="margin: 25px 0; text-align: center;">
+            <img id="display-image" src="https://th.bing.com/th/id/OIP.NDE_qBmOavpeezBouVhS3QHaHa?rs=1&pid=ImgDetMain" alt="Hitesh Choudhary" height="250px">
+            <h3 id="display-followers">10K Followers</h3>
+        </div>
+    </body>
+    <script>
+        const requestUrl = 'https://api.github.com/users/hiteshchoudhary';
+        const xhr = new XMLHttpRequest();
+        
+        xhr.open('GET', requestUrl);
+        console.log(xhr.readyState, new Date().toLocaleTimeString());
+
+        xhr.onreadystatechange = function() {
+            console.log(xhr.readyState, new Date().toLocaleTimeString());
+
+            if(xhr.readyState === 4){
+                //console.log(this.responseText);
+                 
+                const data = JSON.parse(this.responseText);
+                console.log(typeof data);
+                console.log(data);
+
+                document.getElementById('display-image').setAttribute('src', data.avatar_url);
+                document.getElementById('display-followers').innerHTML = `${data.followers} Followers`;
+            }
+        }
+
+        xhr.send();
+    </script>
+</html>
