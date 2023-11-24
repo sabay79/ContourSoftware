@@ -21,4 +21,20 @@ alpha.saba();
 aplhaValue.saba();
 
 alpha.heySaba();
-//aplhaValue.heySaba();
+//aplhaValue.heySaba(); 
+
+//////////////////////////////////////////////////////////////////////
+
+let username = 'saba           ';
+String.prototype.trueLength = function() {
+    //console.log(`${this}`);
+    console.log(`True Length is: ${this.trim().length}`);
+}
+
+username.trueLength();
+
+console.log('saba yashfeen'.length);
+'saba yashfeen'.trueLength();
+
+console.log('   saba yashfeen   '.length);
+'   saba yashfeen   '.trueLength();
