@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lexical Scoping & Closure</title>
+    </head>
+
+    <style>
+        button{
+            padding: 10px 25px;
+            margin-right: 75px;
+            border: 3px double;
+        }
+    </style>
+
+    <body>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures?ref=dave.anotherclass.kr"><h2>Lexical Scoping and Closure</h2></a>
+        
+        <button id="green">GREEN</button>
+        <button id="purple">PURPLE</button>
+    </body>
+
+    <script>
+        function init(){
+            let name = 'saba';
+            
+            function displayName() {
+                console.log(name);
+            }
+            displayName();
+        }
+        init();
+
+        function outer() {
+            let name = 'saba';
+
+            function inner01(){
+                let secret = '123';
+                console.log('INNER ', name);
+                console.log(secret);
+            }
+            
+            function inner02(){
+                //console.log(secret); //ERROR
+            }
+
+            inner01();
+            inner02();
+            //console.log(secret); //ERROR
+        }
+        outer();
+        console.log('TOO OUTER ', name); // Won't display value of 'name'
+
+        function clickhandler(color) {
+            //document.body.style.backgroundColor = `${color}`;
+            
+            return function(){  
+                document.getElementById(`${color}`).style.backgroundColor = `${color}`;
+                document.getElementById(`${color}`).style.color = `white`;
+                
+                document.querySelector('a').style.color = `white`;
+                document.body.style.backgroundColor = `${color}`;
+            }
+        }
+
+        document.getElementById('green').onclick = clickhandler('green');
+        document.getElementById('purple').onclick = clickhandler('purple');
+    </script>
+</html>
