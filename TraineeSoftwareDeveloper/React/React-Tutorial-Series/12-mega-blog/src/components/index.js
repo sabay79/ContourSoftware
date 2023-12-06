@@ -13,21 +13,18 @@ import Signup from './Signup';
 
 import AuthLayout from './AuthLayout';
 import PostCard from './PostCard';
+import PostForm from './PostForm/PostForm';
 
 import RTE from './RTE';
 
 export {
-    Header,
-    Footer,
+    Header, Footer,
     LogoutBtn,
     Container,
     Logo,  
-    Button,
-    Input,
-    Select,
-    Login,
-    Signup,
+    Button, Input, Select,
+    Login, Signup,
     AuthLayout,
-    PostCard,
+    PostCard, PostForm,
     RTE,
 };
