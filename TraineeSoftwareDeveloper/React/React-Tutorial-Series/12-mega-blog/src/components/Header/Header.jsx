@@ -17,10 +17,10 @@ const Header = () => {
     ];
 
     return (
-        <header className='py-3 shadow bg-gray-500'>
+        <header className='p-3 shadow bg-blue-700 text-white'>
             <Container>
                 <nav className="flex">
-                    <div className="mr-4">
+                    <div className="mr-4 mt-1  text-2xl">
                         <Link to='/'>
                             <Logo width='70px' />
                         </Link>
@@ -32,7 +32,7 @@ const Header = () => {
                                                 <li key={item.name}>
                                                     <button
                                                         onClick={() => navigate(item.url)}
-                                                        className='inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'
+                                                        className='inline-block px-6 py-2 duration-200 hover:bg-white hover:text-black rounded-full'
                                                     >
                                                         {item.name}
                                                     </button>

@@ -5,6 +5,8 @@ import parse from 'html-react-parser';
 
 import appwriteService from '../appwrite/config';
 import { Button, Container } from '../components';
+import AddPost from './AddPost';
+import UpdatePost from './UpdatePost';
 
 const Post = () => {
 

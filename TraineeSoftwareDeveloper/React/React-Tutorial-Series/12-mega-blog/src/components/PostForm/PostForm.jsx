@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { Button, Input, Select, RTE } from '../';
 import appwriteService from '../../appwrite/config';
 
-const PostForm = ({post}) => {
+const PostForm = ({ post }) => {
 
     const {register, handleSubmit, watch, setValue, control, getValues} = useForm({
         defaultValues: {
@@ -18,11 +18,11 @@ const PostForm = ({post}) => {
     });
 
     const navigate = useNavigate();
-    const userData = useSelector(state => state.user.userData);
+    const userData = useSelector((state) => state.auth.userData);
 
-    const submit = async(data) => {
+    const submit = async (data) => {
         if(post){
-            const file = data.image[0] ? appwriteService.uploadFile(data.image[0]) : null;
+            const file = data.featuredImage[0] ? await appwriteService.uploadFile(data.featuredImage[0]) : null;
 
             if(file){
                 appwriteService.deleteFile(post.featuredImage);
@@ -30,18 +30,19 @@ const PostForm = ({post}) => {
 
             const dbPost = await appwriteService.updatePost(post.$id, {
                 ...data,
-                featuredImage: file ? file.$id : undefined
+                featuredImage: file ? file.$id : undefined,
             });
 
             if(dbPost){
-                navigate(`/post/${dbPost.$id}`)
+                navigate(`/post/${dbPost.$id}`);
             }
         } else{
-            const file = appwriteService.updateFile(data.image[0]);
+            const file = await appwriteService.uploadFile(data.featuredImage[0]);
 
             if(file){
                 const fileId = file.$id;
                 data.featuredImage = fileId;
+                
                 const dbPost = await appwriteService.createPost({
                     ...data,
                     userId: userData.$id,
@@ -59,7 +60,8 @@ const PostForm = ({post}) => {
             return value
                    .trim()
                    .toLowerCase()
-                   .replace(/^[a-zA-Z\d]+/g, '-');
+                   .replace(/[^a-zA-Z\d\s]+/g, "-")
+                   .replace(/\s/g, "-");        
         }
     }, []);
 
@@ -90,7 +92,7 @@ const PostForm = ({post}) => {
                     className="mb-4"
                     {...register("slug", { required: true })}
                     onInput={(e) => {
-                        setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
+                        setValue("slug", slugTransfrom(e.currentTarget.value), { shouldValidate: true });
                     }}
                 />
 
@@ -103,7 +105,7 @@ const PostForm = ({post}) => {
                     type="file"
                     className="mb-4"
                     accept="image/png, image/jpg, image/jpeg, image/gif"
-                    {...register("image", { required: !post })}
+                    {...register("featuredImage", { required: !post })}
                 />
 
                 {post && (

@@ -22,7 +22,7 @@ const Home = () => {
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
                             <h1 className="text-2xl font-bold hover:text-gray-500">
-                                Login to Read Posts
+                                No Posts Found.
                             </h1>
                         </div>
                     </div>
