@@ -35,7 +35,7 @@ namespace WebAPI.Controllers
             }
 
             var resumeUrl = Guid.NewGuid().ToString() + ".pdf";
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Documets", "pdfs", resumeUrl);
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Documents", "pdfs", resumeUrl);
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 await pdfFile.CopyToAsync(stream);

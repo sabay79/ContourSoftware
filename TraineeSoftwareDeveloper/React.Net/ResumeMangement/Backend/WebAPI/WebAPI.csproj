@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <Folder Include="Documents\pdfs\" />
+    <Folder Include="Documents\pdfs\" />
   </ItemGroup>
 
 </Project>
